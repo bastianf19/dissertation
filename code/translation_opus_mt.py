@@ -4,157 +4,32 @@ from transformers import MarianMTModel, MarianTokenizer
 import argparse
 import glob
 import logging
-from datetime import datetime
 import gc
-from tqdm import tqdm
+from helper import setup_logging, log_gpu_memory, calculate_optimal_batch_size, get_pending_files
 
-def setup_logging(log_dir='../logs'):
+def translate_text_batch(batch, model, tokenizer, device, max_length=512):
     """
-    Setup logging configuration
+    Translate a batch of texts using opus-mt-en-id model with dynamic length handling,
+    preserving empty lines and special characters
     """
-    # Create logs directory if it doesn't exist
-    os.makedirs(log_dir, exist_ok=True)
+    # Create a mask to track which items are empty lines
+    empty_mask = [line.strip() == "" for line in batch]
     
-    # Configure timestamp for the log filename
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_file = f'{log_dir}/babylm_translation_{timestamp}.log'
+    # Only process non-empty lines
+    non_empty_batch = [line for line in batch if line.strip()]
     
-    # Configure logging
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
+    # If all lines are empty, return the original batch
+    if not non_empty_batch:
+        return batch
     
-    # Clear existing handlers if any
-    if logger.handlers:
-        logger.handlers.clear()
-    
-    # Create file handler
-    file_handler = logging.FileHandler(log_file)
-    file_handler.setLevel(logging.INFO)
-    
-    # Create console handler
-    console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.INFO)
-    
-    # Create formatter
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    file_handler.setFormatter(formatter)
-    console_handler.setFormatter(formatter)
-    
-    # Add handlers to logger
-    logger.addHandler(file_handler)
-    logger.addHandler(console_handler)
-    
-    logging.info(f"Logging initialized. Log file: {log_file}")
-    return logger
-
-def get_gpu_memory_info():
-    """
-    Get current GPU memory usage
-    """
-    if not torch.cuda.is_available():
-        return "GPU not available"
-    
-    # Get current GPU memory usage
-    total_memory = torch.cuda.get_device_properties(0).total_memory / (1024**3)  # GB
-    reserved_memory = torch.cuda.memory_reserved(0) / (1024**3)  # GB
-    allocated_memory = torch.cuda.memory_allocated(0) / (1024**3)  # GB
-    free_memory = total_memory - reserved_memory
-    
-    memory_info = {
-        "total": total_memory,
-        "reserved": reserved_memory,
-        "allocated": allocated_memory,
-        "free": free_memory
-    }
-    
-    return memory_info
-
-def log_gpu_memory(prefix=""):
-    """
-    Log current GPU memory usage
-    """
-    if not torch.cuda.is_available():
-        logging.info("GPU not available")
-        return
-    
-    memory_info = get_gpu_memory_info()
-    logging.info(f"{prefix} GPU Memory - Total: {memory_info['total']:.2f}GB, "
-                f"Reserved: {memory_info['reserved']:.2f}GB, "
-                f"Allocated: {memory_info['allocated']:.2f}GB, "
-                f"Free: {memory_info['free']:.2f}GB")
-
-def calculate_optimal_batch_size(model, tokenizer, device, target_memory_usage=0.8, max_length=512, initial_batch_size=16):
-    """
-    Calculate optimal batch size based on available GPU memory
-    """
-    if not torch.cuda.is_available():
-        logging.info("GPU not available, using default batch size")
-        return initial_batch_size
-    
-    memory_info = get_gpu_memory_info()
-    total_memory = memory_info["total"]
-    
-    # Start with a small batch and dummy input
-    batch_size = 2
-    dummy_text = ["This is a dummy text for batch size calculation."] * batch_size
-    
-    # Record initial memory usage
-    initial_memory = torch.cuda.memory_allocated(0) / (1024**3)
-    
-    # Tokenize and process through model
-    encoded = tokenizer(dummy_text, return_tensors="pt", padding=True, truncation=True, max_length=max_length)
-    input_ids = encoded['input_ids'].to(device)
-    attention_mask = encoded['attention_mask'].to(device)
-    
-    # Generate translation to see memory usage
-    with torch.no_grad():
-        model.generate(
-            input_ids=input_ids,
-            attention_mask=attention_mask,
-            max_length=max_length,
-            num_beams=4,
-            early_stopping=True
-        )
-    
-    # Calculate memory used per sample
-    current_memory = torch.cuda.memory_allocated(0) / (1024**3)
-    memory_per_sample = (current_memory - initial_memory) / batch_size
-    
-    # Free up memory
-    del input_ids, attention_mask, encoded
-    torch.cuda.empty_cache()
-    gc.collect()
-    
-    # Calculate optimal batch size (with a safety factor)
-    available_memory = total_memory * target_memory_usage - initial_memory
-    optimal_batch_size = int(available_memory / memory_per_sample)
-    
-    # Ensure we have a reasonable batch size
-    optimal_batch_size = max(1, min(optimal_batch_size, 64))
-    
-    logging.info(f"Memory per sample: {memory_per_sample:.4f}GB")
-    logging.info(f"Recommended batch size for {target_memory_usage*100:.0f}% GPU memory usage: {optimal_batch_size}")
-    
-    return optimal_batch_size
-
-def translate_text_batch(batch, model, tokenizer, device, max_length=768):
-    """
-    Translate a batch of texts from English to Indonesian with dynamic length handling
-    """
-    # Skip empty lines
-    batch = [line for line in batch if line.strip()]
-    
-    if not batch:
-        return []
-    
-    # Determine if we need to split long sequences
-    long_sequences = any(len(tokenizer.encode(text)) > 512 for text in batch)
+    # Determine if we need to use longer sequence length
+    long_sequences = any(len(tokenizer.encode(text)) > 512 for text in non_empty_batch)
     
     # Use a larger max_length for long sequences
     actual_max_length = max_length if long_sequences else 512
     
     # Tokenize the text
-    encoded = tokenizer(batch, return_tensors="pt", padding=True, truncation=True, max_length=actual_max_length)
+    encoded = tokenizer(non_empty_batch, return_tensors="pt", padding=True, truncation=True, max_length=actual_max_length)
     
     # Move to GPU if available
     input_ids = encoded['input_ids'].to(device)
@@ -176,11 +51,22 @@ def translate_text_batch(batch, model, tokenizer, device, max_length=768):
     # Free up memory explicitly
     del input_ids, attention_mask, encoded, translated
     
-    return translated_texts
+    # Reconstruct the batch with empty lines preserved
+    result = []
+    non_empty_index = 0
+    for is_empty in empty_mask:
+        if is_empty:
+            result.append("")  # Keep empty lines as empty
+        else:
+            result.append(translated_texts[non_empty_index])
+            non_empty_index += 1
+    
+    return result
 
-def translate_file(source_file, target_file, model, tokenizer, device, batch_size=16, max_length=768):
+def translate_file(source_file, target_file, model, tokenizer, device, batch_size=16, max_length=512):
     """
-    Translate a file line by line from English to Indonesian with adaptive batching
+    Translate a file line by line using opus-mt-en-id with adaptive batching,
+    preserving all newlines and formatting
     """
     logging.info(f"Starting translation of: {source_file}")
     log_gpu_memory("Before translation:")
@@ -188,7 +74,7 @@ def translate_file(source_file, target_file, model, tokenizer, device, batch_siz
     # Create directory for target file if it doesn't exist
     os.makedirs(os.path.dirname(target_file), exist_ok=True)
     
-    # Read source file
+    # Read source file, preserving all whitespace and newlines
     try:
         with open(source_file, 'r', encoding='utf-8') as f:
             lines = f.readlines()
@@ -197,36 +83,49 @@ def translate_file(source_file, target_file, model, tokenizer, device, batch_siz
         logging.error(f"Error reading {source_file}: {e}")
         return
     
-    # Analyze sentence lengths to determine if we need smaller batches
-    token_lengths = [len(tokenizer.encode(line.strip())) for line in lines if line.strip()]
-    avg_length = sum(token_lengths) / len(token_lengths) if token_lengths else 0
-    max_tokens = max(token_lengths) if token_lengths else 0
+    # Calculate token statistics for non-empty lines only
+    non_empty_lines = [line for line in lines if line.strip()]
+    if non_empty_lines:
+        token_lengths = [len(tokenizer.encode(line.strip())) for line in non_empty_lines]
+        avg_length = sum(token_lengths) / len(token_lengths)
+        max_tokens = max(token_lengths)
+    else:
+        avg_length = 0
+        max_tokens = 0
     
-    logging.info(f"Average tokens per line: {avg_length:.1f}, Maximum tokens: {max_tokens}")
+    logging.info(f"Average tokens per non-empty line: {avg_length:.1f}, Maximum tokens: {max_tokens}")
     
     # Adjust batch size for very long sequences
     adaptive_batch_size = batch_size
     if max_tokens > 256:
-        scale_factor = min(1.0, 256 / avg_length)
+        scale_factor = min(1.0, 256 / max(1, avg_length))
         adaptive_batch_size = max(1, int(batch_size * scale_factor))
         logging.info(f"Adjusted batch size to {adaptive_batch_size} due to long sequences")
     
     # Translate in batches
     translated_lines = []
     
-    # Use tqdm for progress bar
+    # Create progress bar
     progress_bar = range(0, len(lines), adaptive_batch_size)
     
     for i in progress_bar:
         try:
+            # Get batch - keep original lines intact, including newlines
             batch = lines[i:i+adaptive_batch_size]
-            batch = [line.strip() for line in batch]
             
-            translated_batch = translate_text_batch(batch, model, tokenizer, device, max_length)
-            translated_lines.extend(translated_batch)
+            # Strip newlines only for translation, but preserve them for later
+            batch_for_translation = [line.rstrip('\n') for line in batch]
+            
+            translated_batch = translate_text_batch(batch_for_translation, model, tokenizer, device, max_length)
+            
+            # Add back newlines that were in the original
+            translated_batch_with_newlines = [line + ('\n' if i < len(batch) and batch[i].endswith('\n') else '') 
+                                               for i, line in enumerate(translated_batch)]
+            
+            translated_lines.extend(translated_batch_with_newlines)
             
             # Update progress description
-            logging.info(f"Translated {i + len(batch)}/{len(lines)} lines, {i + len(batch) / len(lines)} %; {log_gpu_memory(f'After {i + len(batch)} lines:')}")
+            logging.info(f"Translated {i + len(batch)}/{len(lines)} lines, {(i + len(batch)) / len(lines):.2%}; {log_gpu_memory('After batch:')}")
             
             # Check memory usage periodically
             if (i // adaptive_batch_size) % 50 == 0 and i > 0:
@@ -248,9 +147,14 @@ def translate_file(source_file, target_file, model, tokenizer, device, batch_siz
                 
                 # Retry with smaller batch
                 batch = lines[i:i+new_batch_size]
-                batch = [line.strip() for line in batch]
-                translated_batch = translate_text_batch(batch, model, tokenizer, device, max_length)
-                translated_lines.extend(translated_batch)
+                batch_for_translation = [line.rstrip('\n') for line in batch]
+                translated_batch = translate_text_batch(batch_for_translation, model, tokenizer, device, max_length)
+                
+                # Add back newlines
+                translated_batch_with_newlines = [line + ('\n' if i < len(batch) and batch[i].endswith('\n') else '') 
+                                                 for i, line in enumerate(translated_batch)]
+                
+                translated_lines.extend(translated_batch_with_newlines)
                 
                 # Continue with smaller batch size
                 adaptive_batch_size = new_batch_size
@@ -262,52 +166,22 @@ def translate_file(source_file, target_file, model, tokenizer, device, batch_siz
     # Write to target file
     try:
         with open(target_file, 'w', encoding='utf-8') as f:
-            for line in translated_lines:
-                f.write(line + '\n')
+            f.writelines(translated_lines)
         logging.info(f"Successfully translated {len(translated_lines)} lines to {target_file}")
     except Exception as e:
         logging.error(f"Error writing to {target_file}: {e}")
     
     log_gpu_memory("After translation:")
 
-def get_pending_files(source_files, target_dir):
-    """
-    Get files that still need to be processed (don't exist in target directory)
-    """
-    pending_files = []
-    skipped_files = []
-    
-    for source_file in source_files:
-        base_name = os.path.basename(source_file)
-        target_file = os.path.join(target_dir, base_name)
-        
-        if os.path.exists(target_file):
-            # Check if the file is empty or corrupt
-            try:
-                with open(target_file, 'r', encoding='utf-8') as f:
-                    content = f.read().strip()
-                
-                if not content:  # Empty file
-                    logging.info(f"Target file {target_file} exists but is empty. Will reprocess.")
-                    pending_files.append(source_file)
-                else:
-                    skipped_files.append(source_file)
-            except Exception:
-                # If there's an error reading the file, assume it's corrupt and reprocess
-                logging.warning(f"Error reading target file {target_file}. Will reprocess.")
-                pending_files.append(source_file)
-        else:
-            pending_files.append(source_file)
-    
-    return pending_files, skipped_files
 
 def main():
-    parser = argparse.ArgumentParser(description='Translate BabyLM dataset from English to Indonesian')
+    parser = argparse.ArgumentParser(description='Translate BabyLM dataset using opus-mt-en-id model')
     parser.add_argument('--source_dir', type=str, required=True, help='Root directory containing babylm_data')
     parser.add_argument('--target_dir', type=str, required=True, help='Directory to save translated files')
-    parser.add_argument('--model_path', type=str, required=True, help='Directory to access MT Model path')
+    parser.add_argument('--model_path', type=str, default='Helsinki-NLP/opus-mt-en-id', 
+                      help='Translation model to use (default: Helsinki-NLP/opus-mt-en-id)')
     parser.add_argument('--batch_size', type=int, default=16, help='Batch size for translation (default: 16)')
-    parser.add_argument('--max_length', type=int, default=768, help='Maximum sequence length for long sentences (default: 768)')
+    parser.add_argument('--max_length', type=int, default=512, help='Maximum sequence length for long sentences (default: 512)')
     parser.add_argument('--auto_batch_size', action='store_true', help='Automatically determine optimal batch size')
     parser.add_argument('--subsets', nargs='+', default=['babylm_10M', 'babylm_100M', 'babylm_dev', 'babylm_test'], 
                         help='Subsets to translate (default: all)')
@@ -320,7 +194,7 @@ def main():
     setup_logging(args.log_dir)
     
     # Log start time and configuration
-    logging.info(f"=== Starting BabyLM Dataset Translation Process ===")
+    logging.info(f"=== Starting BabyLM Dataset Translation Process with Opus-MT ===")
     logging.info(f"Source directory: {args.source_dir}")
     logging.info(f"Target directory: {args.target_dir}")
     logging.info(f"Model path: {args.model_path}")
@@ -338,7 +212,9 @@ def main():
         raise ValueError(f"Source directory {source_babylm_dir} does not exist")
     
     # Create target directory if it doesn't exist
-    target_babylm_dir = os.path.join(args.target_dir, 'babylm_data_id')
+    # For opus-mt-en-id, target language is always Indonesian (id)
+    target_suffix = "id"
+    target_babylm_dir = os.path.join(args.target_dir, f'babylm_data_{target_suffix}')
     os.makedirs(target_babylm_dir, exist_ok=True)
     logging.info(f"Created target directory: {target_babylm_dir}")
     
@@ -352,13 +228,12 @@ def main():
         gpu_name = torch.cuda.get_device_name(0)
         logging.info(f"GPU: {gpu_name}")
     
-    # Load the model and tokenizer
-    logging.info("Loading opus-mt-en-id model and tokenizer...")
+    # Load the opus-mt-en-id model and tokenizer
+    logging.info(f"Loading opus-mt-en-id model and tokenizer from {args.model_path}...")
     try:
-        model_name = args.model_path
-        tokenizer = MarianTokenizer.from_pretrained(model_name)
-        model = MarianMTModel.from_pretrained(model_name).to(device)
-        logging.info("Model and tokenizer loaded successfully")
+        model = MarianMTModel.from_pretrained(args.model_path).to(device)
+        tokenizer = MarianTokenizer.from_pretrained(args.model_path)
+        logging.info("opus-mt-en-id model and tokenizer loaded successfully")
         log_gpu_memory("After model loading")
     except Exception as e:
         logging.error(f"Error loading model and tokenizer: {e}")
@@ -422,6 +297,9 @@ def main():
         
         # Translate pending files
         for source_file in pending_files:
+            if 'open_subtitles.train' in source_file:
+                logging.info("open_subtitles too large! skipping for now..")
+                continue
             base_name = os.path.basename(source_file)
             target_file = os.path.join(target_subset_dir, base_name)
             
@@ -432,7 +310,7 @@ def main():
                     target_file, 
                     model, 
                     tokenizer, 
-                    device, 
+                    device,
                     batch_size=batch_size,
                     max_length=args.max_length
                 )

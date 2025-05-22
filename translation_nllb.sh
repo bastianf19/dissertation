@@ -1,0 +1,2 @@
+#!/bin/bash
+python code/translation_nllb.py --source_dir dataset/ --target_dir dataset/translated/nllb/ --model_path models/nllb-200-1B-distilled --src_lang eng_Latn --tgt_lang ind_Latn --batch_size 12 --subsets babylm_100M

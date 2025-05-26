@@ -226,25 +226,28 @@ if __name__ == "__main__":
         prog='Perturb BabyLM dataset',
         description='Perturb BabyLM dataset by altering POS-tagged data')
     parser.add_argument('perturbation_type',
-                        default='all',
+                        default='shuffle_control',
                         const='all',
                         nargs='?',
                         choices=PERTURBATIONS.keys(),
                         help='Perturbation function used to transform BabyLM dataset')
     parser.add_argument('babylm_dataset',
-                        default='all',
+                        default='10M',
                         const='all',
                         nargs='?',
                         choices=BABYLM_SPLITS,
                         help='BabyLM dataset choice')
 
-    # Get args
+    # Get args 
     args = parser.parse_args()
+    
+    print(f"using perturbation_type: {args.perturbation_type}; babylm_dataset:{args.babylm_dataset}")
 
     # Load dataset (only json files containing tagged data)
     babylm_dataset = args.babylm_dataset
     json_ext = "_parsed.json"
     babylm_data = glob(f"{BABYLM_DATA_PATH}/babylm_data/babylm_{babylm_dataset}/*{json_ext}")
+    print(f"processing: {f"{BABYLM_DATA_PATH}/babylm_data/babylm_{babylm_dataset}/*{json_ext}"}; found: {len(babylm_data)}")
 
     # Get perturbation, affect, and filter functions
     perturbation_function = PERTURBATIONS[args.perturbation_type]['perturbation_function']
@@ -302,6 +305,7 @@ if __name__ == "__main__":
 
     else:
         # Iterate over files and do transform
+        print("iterate over babylm_data...")
         for file in babylm_data:
             print(file)
             f = open(file)

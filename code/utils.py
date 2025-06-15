@@ -30,9 +30,9 @@ GENRES = {
     "switchboard": "Switchboard Dialog Act Corpus",
     "wikipedia": "Wikipedia"
 }
-CHECKPOINT_WRITE_PATH = "models/babylm_models"
-CHECKPOINT_READ_PATH = "models/babylm_models"
-BABYLM_DATA_PATH = "dataset/translated/nllb/babylm_data_ind"
+CHECKPOINT_WRITE_PATH = "/home/s2587034/pretrained_checkpoints/babylm_models"
+CHECKPOINT_READ_PATH = "/home/s2587034/pretrained_checkpoints/babylm_models"
+BABYLM_DATA_PATH = "../../dataset/clean_data/nllb/babylm_data_ind"
 MARKER_HOP_SING = "🅂"
 MARKER_HOP_PLUR = "🄿"
 MARKER_REV = "🅁"
@@ -47,8 +47,7 @@ PUNCT_TOKENS = set(punctuation)
 # PARENS MODELS (Structurally-pretrained)
 ##############################################################################
 
-
-PAREN_MODEL_PATH = "/u/scr/isabelvp//tilt-stuff/tilt-finetuning/pretrained_checkpoints/"
+PAREN_MODEL_PATH = "../pretrained_checkpoints"
 PAREN_MODELS = {
     "CROSS": "flat-parens_vocab500-uniform_deplength-nesting-nolimit",
     "NEST": "nested-parens0.49_vocab500-uniform",

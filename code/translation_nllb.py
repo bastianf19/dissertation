@@ -5,7 +5,7 @@ import argparse
 import glob
 import logging
 import gc
-from helper import setup_logging, log_gpu_memory, calculate_optimal_batch_size, get_pending_files
+from helper import setup_logging, log_gpu_memory, calculate_optimal_batch_size, get_pending_files, aggressive_memory_cleanup, memory_efficient_cleanup
 
 def translate_text_batch(batch, model, tokenizer, device, src_lang="eng_Latn", tgt_lang="ind_Latn", max_length=768):
     """
@@ -70,6 +70,50 @@ def translate_text_batch(batch, model, tokenizer, device, src_lang="eng_Latn", t
     
     return result
 
+def split_file_into_parts(source_file, num_parts=4):
+    """
+    Split a file into multiple parts for parallel processing.
+    Returns list of part file paths.
+    """
+    base_dir = os.path.dirname(source_file)
+    base_name = os.path.basename(source_file)
+    name_parts = base_name.split('.')
+    base_filename = '.'.join(name_parts[:-1])
+    extension = name_parts[-1]
+    
+    # Create parts directory
+    parts_dir = os.path.join(base_dir, f"{base_filename}_parts")
+    os.makedirs(parts_dir, exist_ok=True)
+    
+    # Read the original file
+    with open(source_file, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    
+    total_lines = len(lines)
+    lines_per_part = total_lines // num_parts
+    remainder = total_lines % num_parts
+    
+    part_files = []
+    start_idx = 0
+    
+    for i in range(num_parts):
+        # Calculate lines for this part (distribute remainder among first parts)
+        part_lines = lines_per_part + (1 if i < remainder else 0)
+        end_idx = start_idx + part_lines
+        
+        # Create part file
+        part_filename = f"{base_filename}_part{i+1}.{extension}"
+        part_path = os.path.join(parts_dir, part_filename)
+        
+        with open(part_path, 'w', encoding='utf-8') as f:
+            f.writelines(lines[start_idx:end_idx])
+        
+        part_files.append(part_path)
+        logging.info(f"Created {part_filename} with {part_lines} lines")
+        start_idx = end_idx
+    
+    return part_files
+
 def translate_file(source_file, target_file, model, tokenizer, device, src_lang="eng_Latn", tgt_lang="ind_Latn", batch_size=16, max_length=768):
     """
     Translate a file line by line using NLLB with adaptive batching,
@@ -133,20 +177,23 @@ def translate_file(source_file, target_file, model, tokenizer, device, src_lang=
             
             # Update progress description
             logging.info(f"Translated {i + len(batch)}/{len(lines)} lines, {(i + len(batch)) / len(lines):.2%}; {log_gpu_memory('After batch:')}")
+            aggressive_memory_cleanup()
             
-            # Check memory usage periodically
+            # Check memory usage periodically with enhanced cleanup
             if (i // adaptive_batch_size) % 50 == 0 and i > 0:
                 log_gpu_memory(f"After {i + len(batch)} lines:")
-                # Explicitly clean up any unused memory
-                torch.cuda.empty_cache()
-                gc.collect()
+                # Use aggressive memory cleanup
+                aggressive_memory_cleanup()
+            
+            # Additional periodic cleanup for high memory usage
+            elif (i // adaptive_batch_size) % 10 == 0:
+                memory_efficient_cleanup()
                 
         except RuntimeError as e:
             if "out of memory" in str(e):
                 # Handle OOM error by reducing batch size and retrying
                 logging.warning(f"OOM error. Reducing batch size and retrying.")
-                torch.cuda.empty_cache()
-                gc.collect()
+                aggressive_memory_cleanup()
                 
                 # Try with half the batch size
                 new_batch_size = max(1, adaptive_batch_size // 2)
@@ -181,7 +228,7 @@ def translate_file(source_file, target_file, model, tokenizer, device, src_lang=
     log_gpu_memory("After translation:")
 
 
-def main():
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Translate BabyLM dataset using NLLB model')
     parser.add_argument('--source_dir', type=str, required=True, help='Root directory containing babylm_data')
     parser.add_argument('--target_dir', type=str, required=True, help='Directory to save translated files')
@@ -197,6 +244,8 @@ def main():
     parser.add_argument('--log_dir', type=str, default='logs', help='Directory to save log files')
     parser.add_argument('--memory_target', type=float, default=0.85, help='Target GPU memory usage (0.0-1.0)')
     parser.add_argument('--force_all', action='store_true', help='Force translation of all files even if they exist in target')
+    parser.add_argument('--split_open_subtitles', action='store_true', help='Split open_subtitles files into 4 parts for parallel processing')
+    parser.add_argument('--process_part', type=int, choices=[1,2,3,4], help='Process only specific part of split open_subtitles (1-4)')
     args = parser.parse_args()
     
     # Setup logging
@@ -215,6 +264,9 @@ def main():
     logging.info(f"Memory usage target: {args.memory_target * 100:.0f}%")
     logging.info(f"Subsets to translate: {args.subsets}")
     logging.info(f"Force translate all files: {args.force_all}")
+    logging.info(f"Split open_subtitles: {args.split_open_subtitles}")
+    if args.process_part:
+        logging.info(f"Processing only part {args.process_part} of split files")
     
     # Check if directories exist
     source_babylm_dir = os.path.join(args.source_dir, 'babylm_data')
@@ -307,10 +359,50 @@ def main():
         
         # Translate pending files
         for source_file in pending_files:
-            if 'open_subtitles.train' in source_file:
-                logging.info("open_subtitles too large! skipping for now..")
-                continue
             base_name = os.path.basename(source_file)
+            
+            # Handle open_subtitles files specially
+            if 'open_subtitles' in source_file and args.split_open_subtitles:
+                logging.info(f"Splitting open_subtitles file: {source_file}")
+                
+                # Split the file into 4 parts
+                part_files = split_file_into_parts(source_file, num_parts=4)
+                
+                # If process_part is specified, only process that part
+                if args.process_part:
+                    part_files = [part_files[args.process_part - 1]]
+                    logging.info(f"Processing only part {args.process_part}")
+                
+                # Process each part
+                for part_file in part_files:
+                    part_base_name = os.path.basename(part_file)
+                    target_file = os.path.join(target_subset_dir, part_base_name)
+                    
+                    try:
+                        translate_file(
+                            part_file, 
+                            target_file, 
+                            model, 
+                            tokenizer, 
+                            device,
+                            src_lang=args.src_lang,
+                            tgt_lang=args.tgt_lang,
+                            batch_size=batch_size,
+                            max_length=args.max_length
+                        )
+                        translated_files += 1
+                        
+                        # Aggressive cleanup after each part
+                        logging.info("Performing cleanup after part translation...")
+                        aggressive_memory_cleanup()
+                        log_gpu_memory("After part cleanup:")
+                        
+                    except Exception as e:
+                        logging.error(f"Failed to translate {part_file}: {e}")
+                
+                continue  # Skip normal processing for open_subtitles
+            
+            # Normal file processing
             target_file = os.path.join(target_subset_dir, base_name)
             
             # Translate file
@@ -328,13 +420,17 @@ def main():
                 )
                 translated_files += 1
                 
-                # Clean up after each file
-                if torch.cuda.is_available():
-                    torch.cuda.empty_cache()
-                    gc.collect()
+                # Aggressive cleanup after each file
+                logging.info("Performing cleanup after file translation...")
+                aggressive_memory_cleanup()
+                log_gpu_memory("After file cleanup:")
                 
             except Exception as e:
                 logging.error(f"Failed to translate {source_file}: {e}")
+    
+    # Final cleanup before completion
+    logging.info("Performing final memory cleanup...")
+    aggressive_memory_cleanup()
     
     # Log completion
     logging.info(f"=== Translation process completed ===")
@@ -343,6 +439,3 @@ def main():
     logging.info(f"Files translated in this run: {translated_files}")
     logging.info(f"Translated files saved to {target_babylm_dir}")
     log_gpu_memory("Final")
-
-if __name__ == "__main__":
-    main()

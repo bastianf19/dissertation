@@ -1,9 +1,18 @@
 File,COMET Score,Total Segments,Potentially Untranslated,Untranslated %,Notes
+nllb_babylm_10M_gutenberg,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_10M/gutenberg.train (120000) vs dataset/translated/nllb/babylm_data_ind/babylm_10M/gutenberg.json (9486138)
 nllb_babylm_10M_qed,0.7737,100000,2742,2.74%,
+nllb_babylm_10M_qed,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_10M/qed.train (100000) vs dataset/translated/nllb/babylm_data_ind/babylm_10M/qed.json (12137762)
 nllb_babylm_10M_children_stories,0.5533,6000,279,4.65%,
+nllb_babylm_10M_wikipedia,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_10M/wikipedia.train (25000) vs dataset/translated/nllb/babylm_data_ind/babylm_10M/wikipedia.json (8749412)
+nllb_babylm_10M_cbt,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_10M/cbt.train (26000) vs dataset/translated/nllb/babylm_data_ind/babylm_10M/cbt.json (5251791)
 nllb_babylm_10M_aochildes,0.7502,80000,827,1.03%,
+nllb_babylm_10M_children_stories,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_10M/children_stories.train (6000) vs dataset/translated/nllb/babylm_data_ind/babylm_10M/children_stories.json (3646625)
+nllb_babylm_10M_switchboard,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_10M/switchboard.train (15740) vs dataset/translated/nllb/babylm_data_ind/babylm_10M/switchboard.json (1443288)
+nllb_babylm_10M_bnc_spoken,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_10M/bnc_spoken.train (90000) vs dataset/translated/nllb/babylm_data_ind/babylm_10M/bnc_spoken.json (10722599)
+nllb_babylm_10M_simple_wikipedia,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_10M/simple_wikipedia.train (68000) vs dataset/translated/nllb/babylm_data_ind/babylm_10M/simple_wikipedia.json (14316368)
 nllb_babylm_10M_gutenberg,0.6613,120000,27793,23.16%,
 nllb_babylm_10M_switchboard,0.7550,15740,1285,8.16%,
+nllb_babylm_10M_aochildes,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_10M/aochildes.train (80000) vs dataset/translated/nllb/babylm_data_ind/babylm_10M/aochildes.json (4466481)
 nllb_babylm_10M_wikipedia,0.6143,25000,5700,22.80%,
 nllb_babylm_10M_simple_wikipedia,0.6345,68000,13849,20.37%,
 nllb_babylm_10M_cbt,0.6993,26000,47,0.18%,
@@ -18,21 +27,44 @@ opus_babylm_10M_gutenberg,0.6267,120000,3493,2.91%,
 opus_babylm_10M_cbt,0.5907,26000,310,1.19%,
 opus_babylm_10M_aochildes,0.6519,80000,11977,14.97%,
 opus_babylm_10M_children_stories,ERROR,,,Empty file: dataset/babylm_data/babylm_10M/children_stories.train or dataset/translated/opus-mt/babylm_data_id/babylm_10M/children_stories.train
+nllb_babylm_100M_children_stories,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_100M/children_stories.train (77760) vs dataset/translated/nllb/babylm_data_ind/babylm_100M/children_stories.json (36652451)
 nllb_babylm_100M_wikipedia,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_100M/wikipedia.train (255000) vs dataset/translated/nllb/babylm_data_ind/babylm_100M/wikipedia.train (203012)
 nllb_babylm_100M_children_stories,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_100M/children_stories.train (77760) vs dataset/translated/nllb/babylm_data_ind/babylm_100M/children_stories.train (76380)
+nllb_babylm_100M_gutenberg,0.6526,1130000,251306,22.24%,
+nllb_babylm_100M_switchboard,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_100M/switchboard.train (161740) vs dataset/translated/nllb/babylm_data_ind/babylm_100M/switchboard.json (3734053)
+nllb_babylm_100M_qed,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_100M/qed.train (960000) vs dataset/translated/nllb/babylm_data_ind/babylm_100M/qed.json (122645530)
+nllb_babylm_100M_aochildes,0.7433,763989,5887,0.77%,
 nllb_babylm_100M_switchboard,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_100M/switchboard.train (161740) vs dataset/translated/nllb/babylm_data_ind/babylm_100M/switchboard.train (40796)
+nllb_babylm_100M_wikipedia,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_100M/wikipedia.train (255000) vs dataset/translated/nllb/babylm_data_ind/babylm_100M/wikipedia.json (88316666)
+nllb_babylm_100M_qed,0.7651,960000,22855,2.38%,
+nllb_babylm_100M_bnc_spoken,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_100M/bnc_spoken.train (848989) vs dataset/translated/nllb/babylm_data_ind/babylm_100M/bnc_spoken.train (436092)
 opus_babylm_100M_aochildes,0.6500,763989,117616,15.39%,
+opus_babylm_100M_qed,0.7187,960000,49817,5.19%,
+opus_babylm_100M_bnc_spoken,0.6736,848989,58136,6.85%,
+opus_babylm_100M_cbt,0.6155,263519,3999,1.52%,
+opus_babylm_100M_gutenberg,0.6243,1130000,263690,23.34%,
 opus_babylm_100M_wikipedia,0.5669,255000,59380,23.29%,
 opus_babylm_100M_children_stories,0.5040,77760,1856,2.39%,
+nllb_babylm_dev_aochildes,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_dev/aochildes.dev (70000) vs dataset/translated/nllb/babylm_data_ind/babylm_dev/aochildes.json (4108348)
+nllb_babylm_dev_qed,0.7747,95000,2554,2.69%,
 nllb_babylm_dev_open_subtitles,0.8066,530000,22358,4.22%,
 nllb_babylm_dev_gutenberg,0.6574,100000,20717,20.72%,
 nllb_babylm_dev_bnc_spoken,0.7151,90000,1262,1.40%,
 nllb_babylm_dev_simple_wikipedia,0.6348,75000,16002,21.34%,
+nllb_babylm_dev_children_stories,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_dev/children_stories.dev (6000) vs dataset/translated/nllb/babylm_data_ind/babylm_dev/children_stories.json (2867290)
+nllb_babylm_dev_switchboard,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_dev/switchboard.dev (18000) vs dataset/translated/nllb/babylm_data_ind/babylm_dev/switchboard.json (1614618)
+nllb_babylm_dev_open_subtitles,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_dev/open_subtitles.dev (530000) vs dataset/translated/nllb/babylm_data_ind/babylm_dev/open_subtitles.json (36469376)
 nllb_babylm_dev_children_stories,0.5409,6000,22,0.37%,
+nllb_babylm_dev_bnc_spoken,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_dev/bnc_spoken.dev (90000) vs dataset/translated/nllb/babylm_data_ind/babylm_dev/bnc_spoken.json (10450984)
 nllb_babylm_dev_aochildes,0.7567,70000,539,0.77%,
+nllb_babylm_dev_simple_wikipedia,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_dev/simple_wikipedia.dev (75000) vs dataset/translated/nllb/babylm_data_ind/babylm_dev/simple_wikipedia.json (14392932)
+nllb_babylm_dev_cbt,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_dev/cbt.dev (12747) vs dataset/translated/nllb/babylm_data_ind/babylm_dev/cbt.json (2255149)
+nllb_babylm_dev_gutenberg,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_dev/gutenberg.dev (100000) vs dataset/translated/nllb/babylm_data_ind/babylm_dev/gutenberg.json (8047317)
 nllb_babylm_dev_cbt,0.7510,12747,75,0.59%,
 nllb_babylm_dev_wikipedia,0.6217,30000,7155,23.85%,
 nllb_babylm_dev_switchboard,0.7562,18000,1602,8.90%,
+nllb_babylm_dev_qed,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_dev/qed.dev (95000) vs dataset/translated/nllb/babylm_data_ind/babylm_dev/qed.json (11426338)
+nllb_babylm_dev_wikipedia,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_dev/wikipedia.dev (30000) vs dataset/translated/nllb/babylm_data_ind/babylm_dev/wikipedia.json (10404706)
 opus_babylm_dev_qed,0.7212,95000,5127,5.40%,
 opus_babylm_dev_gutenberg,0.6187,100000,21959,21.96%,
 opus_babylm_dev_aochildes,0.6477,70000,10364,14.81%,
@@ -44,13 +76,24 @@ opus_babylm_dev_bnc_spoken,0.6550,90000,5571,6.19%,
 opus_babylm_dev_cbt,0.6089,12747,147,1.15%,
 opus_babylm_dev_wikipedia,0.5682,30000,7013,23.38%,
 nllb_babylm_test_simple_wikipedia,0.6304,80000,15427,19.28%,
+nllb_babylm_test_bnc_spoken,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_test/bnc_spoken.test (100000) vs dataset/translated/nllb/babylm_data_ind/babylm_test/bnc_spoken.json (11686182)
 nllb_babylm_test_bnc_spoken,0.7164,100000,1391,1.39%,
+nllb_babylm_test_simple_wikipedia,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_test/simple_wikipedia.test (80000) vs dataset/translated/nllb/babylm_data_ind/babylm_test/simple_wikipedia.json (16786156)
 nllb_babylm_test_qed,0.7712,115000,3606,3.14%,
+nllb_babylm_test_cbt,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_test/cbt.test (16646) vs dataset/translated/nllb/babylm_data_ind/babylm_test/cbt.json (2993378)
 nllb_babylm_test_gutenberg,0.6487,130000,25264,19.43%,
+nllb_babylm_test_wikipedia,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_test/wikipedia.test (35000) vs dataset/translated/nllb/babylm_data_ind/babylm_test/wikipedia.json (10859895)
 nllb_babylm_test_wikipedia,0.6229,35000,8909,25.45%,
+nllb_babylm_test_qed,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_test/qed.test (115000) vs dataset/translated/nllb/babylm_data_ind/babylm_test/qed.json (14336919)
 nllb_babylm_test_cbt,0.7284,16646,50,0.30%,
+nllb_babylm_test_gutenberg,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_test/gutenberg.test (130000) vs dataset/translated/nllb/babylm_data_ind/babylm_test/gutenberg.json (10857746)
+nllb_babylm_test_open_subtitles,0.8051,490000,18142,3.70%,
 nllb_babylm_test_aochildes,0.7564,60000,489,0.81%,
+nllb_babylm_test_switchboard,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_test/switchboard.test (20000) vs dataset/translated/nllb/babylm_data_ind/babylm_test/switchboard.json (1835123)
 nllb_babylm_test_switchboard,0.7567,20000,1737,8.69%,
+nllb_babylm_test_aochildes,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_test/aochildes.test (60000) vs dataset/translated/nllb/babylm_data_ind/babylm_test/aochildes.json (3416670)
+nllb_babylm_test_open_subtitles,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_test/open_subtitles.test (490000) vs dataset/translated/nllb/babylm_data_ind/babylm_test/open_subtitles.json (34083289)
+nllb_babylm_test_children_stories,ERROR,,,Line count mismatch: dataset/babylm_data/babylm_test/children_stories.test (8000) vs dataset/translated/nllb/babylm_data_ind/babylm_test/children_stories.json (3632560)
 nllb_babylm_test_children_stories,0.5713,8000,49,0.61%,
 opus_babylm_test_gutenberg,0.6161,130000,26356,20.27%,
 opus_babylm_test_children_stories,0.5134,8000,62,0.78%,

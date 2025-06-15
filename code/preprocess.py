@@ -2,6 +2,7 @@ import os
 import glob
 import argparse
 import logging
+from pathlib import Path
 from helper import clean_text, read_data, write_data, setup_logging
 
 def clean_file(input_file, output_file):
@@ -15,7 +16,11 @@ def clean_file(input_file, output_file):
         return False
     
     # Clean each line
-    cleaned_lines = [clean_text(line)+'\n' for line in lines]
+    cleaned_lines = []
+    for line in lines:   
+        c = clean_text(line)
+        if c:                                # skip if line became empty
+            cleaned_lines.append(c + '\n')
     
     # Write cleaned data
     try:
@@ -26,7 +31,7 @@ def clean_file(input_file, output_file):
         logging.error(f"Error writing to {output_file}: {str(e)}")
         return False
 
-def process_directory(src_dir, target_dir):
+def process_directory(src_dir, target_dir, force):
     """
     Process all files in a directory and its subdirectories
     """
@@ -50,15 +55,30 @@ def process_directory(src_dir, target_dir):
         
         # Process each file in current directory
         for file in files:
+            logging.info(f"processing: {file}...")
+            if '.json' in file:
+                logging.info("json files detected! skipping...")
+                continue
+            
             input_file = os.path.join(root, file)
-            output_file = os.path.join(current_target_dir, file)
+            if 'opus-mt' in input_file or 'perturbed' in input_file:
+                logging.info("opus-mt translated files or perturbed files detected! skipping...")
+                continue
             
-            logging.info(f"Processing {input_file}")
-            
-            if clean_file(input_file, output_file):
-                processed_count += 1
+            target_path = Path(os.path.join(current_target_dir, file))
+            if target_path.is_file() and not force:      # True only for files, not directories
+                logging.info("File exists! skipping....")
+                continue
             else:
-                error_count += 1
+                input_file = os.path.join(root, file)
+                output_file = os.path.join(current_target_dir, file)
+                
+                logging.info(f"Processing {input_file}")
+                
+                if clean_file(input_file, output_file):
+                    processed_count += 1
+                else:
+                    error_count += 1
     
     return processed_count, error_count
 
@@ -67,6 +87,7 @@ def main():
     parser.add_argument('--source_dir', type=str, required=True, help='Root directory containing translated babylm_data')
     parser.add_argument('--target_dir', type=str, required=True, help='Directory to save cleaned files')
     parser.add_argument('--log_dir', type=str, default='logs', help='Directory to save log files')
+    parser.add_argument('--force', action='store_true', help="Force reprocessing even if output files already exist")
     args = parser.parse_args()
     
     # Setup logging
@@ -82,7 +103,7 @@ def main():
         return
     
     # Process all files in the source directory
-    processed, errors = process_directory(args.source_dir, args.target_dir)
+    processed, errors = process_directory(args.source_dir, args.target_dir, args.force)
     
     logging.info(f"Data cleaning completed.")
     logging.info(f"Successfully processed: {processed} files")

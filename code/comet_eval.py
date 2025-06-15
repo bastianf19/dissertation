@@ -63,22 +63,24 @@ def find_matching_files(base_dir, source_pattern, target_pattern):
     # Extract identifiers from filenames to match them
     source_dict = {}
     for sf in source_files:
-        basename = os.path.basename(sf)
-        parts = basename.split('.')
-        if len(parts) > 1:
-            # Use the corpus name and file type as key
-            key = parts[0]  # Assumes format like 'aochildes.train'
-            source_dict[key] = sf
+        if '.json' not in sf or '_parsed.json' not in sf:
+            basename = os.path.basename(sf)
+            parts = basename.split('.')
+            if len(parts) > 1:
+                # Use the corpus name and file type as key
+                key = parts[0]  # Assumes format like 'aochildes.train'
+                source_dict[key] = sf
     
     # Find matching target files
     matched_pairs = []
     for tf in target_files:
-        basename = os.path.basename(tf)
-        parts = basename.split('.')
-        if len(parts) > 1:
-            key = parts[0]
-            if key in source_dict:
-                matched_pairs.append((source_dict[key], tf, key))
+        if '.json' not in tf or '_parsed.json' not in tf:
+            basename = os.path.basename(tf)
+            parts = basename.split('.')
+            if len(parts) > 1:
+                key = parts[0]
+                if key in source_dict:
+                    matched_pairs.append((source_dict[key], tf, key))
     
     return matched_pairs
 

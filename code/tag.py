@@ -1,4 +1,4 @@
-# tag.py
+# tag.py - Optimized Version
 # Author: Julie Kallini
 
 # For importing utils
@@ -20,7 +20,7 @@ from helper import setup_logging
 setup_logging(logname='tag_processing')
 
 
-test_all_files = sorted(glob.glob("dataset/translated/nllb/babylm_data_ind/babylm_*/*"))
+test_all_files = sorted(glob.glob("dataset/translated/nllb/babylm_data_ind/babylm_*/*")) # your translated dataset
 test_original_files = [f for f in test_all_files if ".json" not in f]
 test_json_files = [f for f in test_all_files if "_parsed.json" in f]
 test_cases = list(zip(test_original_files, test_json_files))
@@ -65,7 +65,9 @@ def test_equivalent_lines(original_file, json_file):
 
 
 def __get_constituency_parse(sent, nlp):
-
+    # OPTIMIZED: This function is no longer needed when using single pipeline
+    # but keeping it for compatibility if needed elsewhere
+    
     # Try parsing the doc
     try:
         parse_doc = nlp(sent.text)
@@ -235,8 +237,8 @@ if __name__ == "__main__":
                         nargs='+', help="Path to file(s) (can include glob patterns)")
     parser.add_argument('-p', '--parse', action='store_true',
                         help="Include constituency parse")
-    parser.add_argument('--max-seq-length', type=int, default=350,
-                        help="Maximum sequence length for processing (default: 350)")
+    parser.add_argument('--max-seq-length', type=int, default=512,  # Increased default
+                        help="Maximum sequence length for processing (default: 512)")
     parser.add_argument('--cpu-only', action='store_true',
                         help="Force CPU-only processing to avoid cuDNN issues")
     parser.add_argument('--force', action='store_true',
@@ -245,11 +247,16 @@ if __name__ == "__main__":
                         help="Process only specific dataset subsets (e.g., babylm_10M, babylm_100M, babylm_dev, babylm_test)")
     parser.add_argument('--list-subsets', action='store_true',
                         help="List available dataset subsets and exit")
+    parser.add_argument('--filename', type=str,
+                        help="Filename to process")
+    parser.add_argument('--batch-size', type=int, default=1000000,  # Increased batch size
+                        help="Batch size for processing lines (default: 1000000)")
 
     # Get args
     args = parser.parse_args()
     
     logging.info(f'use parsing: {args.parse}')
+    logging.info(f'batch size: {args.batch_size}')
 
     # If list-subsets is requested, show available subsets and exit
     if args.list_subsets:
@@ -265,122 +272,63 @@ if __name__ == "__main__":
             logging.error("No files found to analyze subsets")
         sys.exit(0)
 
-    # Set environment variables to potentially help with cuDNN issues
-    os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
-    
-    # Try to fix cuDNN issues
-    try:
-        if torch.cuda.is_available() and not args.cpu_only:
-            # Set memory fraction to avoid memory issues
-            torch.cuda.set_per_process_memory_fraction(0.8)
-            # Empty cache
-            torch.cuda.empty_cache()
-            use_gpu = True
-            logging.info("Using GPU processing")
-        else:
-            use_gpu = False
-            logging.info("Using CPU-only processing...")
-    except ImportError:
-        use_gpu = False
-        logging.info("PyTorch not available, using CPU-only processing")
+    torch.backends.cudnn.enabled = False
+    torch.backends.cudnn.benchmark = False  # Additional stability
 
     # Log initial GPU memory
     log_gpu_memory()
 
+    # OPTIMIZATION: Use single comprehensive pipeline instead of two separate ones
+    logging.info("Initializing Stanza NLP pipeline...")
+    
+    # Determine processors based on whether parsing is needed
+    if args.parse:
+        processors = 'tokenize,pos,lemma,constituency'
+        logging.info("Including constituency parsing in single pipeline")
+    else:
+        processors = 'tokenize,pos,lemma'
+    
+    # Create optimized processor config with larger batch sizes
+    processor_config = {
+        'tokenize': {
+            'batch_size': 1000  # Increased batch size
+        },
+        'pos': {
+            'batch_size': 1000,  # Increased batch size
+            'bert_finetune': False
+        },
+        'lemma': {
+            'batch_size': 1000  # Increased batch size
+        }
+    }
+    
+    # Add constituency config if needed
+    if args.parse:
+        processor_config['constituency'] = {
+            'batch_size': 200  # Smaller batch for constituency parsing
+        }
+
+    # Initialize the SINGLE comprehensive pipeline
     try:
-        # Init Stanza NLP tools with error handling
-        logging.info("Initializing Stanza NLP pipeline...")
-        
-        # Create a processor config with controlled batch sizes
-        processor_config = {
-            'tokenize': {
-                'batch_size': 500  # Reduced batch size
-            },
-            'pos': {
-                'batch_size': 500,  # Reduced batch size
-                'bert_finetune': False  # Disable bert fine-tuning
-            },
-            'lemma': {
-                'batch_size': 500  # Reduced batch size
-            }
-        }
-
-        # Initialize the pipeline with the config
-        nlp1 = stanza.Pipeline(
+        nlp = stanza.Pipeline(
             lang='id',
-            processors='tokenize,pos,lemma',
-            package="default",  # Use default instead of default_accurate
-            processor_config=processor_config,
-            use_gpu=use_gpu)
-
-        # If constituency parse is needed, init second Stanza parser
-        if args.parse:
-            logging.info("Initializing constituency parsing pipeline...")
-            constituency_config = {
-                'tokenize': {
-                    'batch_size': 500  # Reduced batch size
-                },
-                'pos': {
-                    'batch_size': 500,  # Reduced batch size
-                    'bert_finetune': False  # Disable bert fine-tuning
-                },
-                'constituency': {
-                    'batch_size': 500  # Reduced batch size
-                }
-            }
-            
-            nlp2 = stanza.Pipeline(
-                lang='id',
-                processors='tokenize,pos,constituency',
-                package="default",  # Use default instead of default_accurate
-                processor_config=constituency_config,
-                use_gpu=use_gpu)
-            
+            processors=processors,
+            package="default",
+            use_gpu=not args.cpu_only,
+            download_method=None,
+            **processor_config)
+        logging.info("Single comprehensive pipeline initialized successfully")
     except Exception as e:
-        logging.error(f"Error initializing Stanza pipeline: {e}")
-        logging.info("Falling back to CPU-only minimal configuration...")
-        processor_config = {
-            'tokenize': {
-                'batch_size': 100
-            },
-            'pos': {
-                'batch_size': 100,
-                'bert_finetune': False  # Disable bert fine-tuning
-            },
-            'lemma': {
-                'batch_size': 100
-            }
-        }
-        
-        nlp1 = stanza.Pipeline(
+        logging.error(f"Failed to initialize GPU pipeline: {e}")
+        logging.info("Falling back to CPU-only mode...")
+        nlp = stanza.Pipeline(
             lang='id',
-            processors='tokenize,pos,lemma',
-            package="default",  # Use default instead of default_accurate
-            processor_config=processor_config,
-            use_gpu=False)  # Force CPU
-        
-        if args.parse:
-            constituency_config = {
-                'tokenize': {
-                    'batch_size': 100
-                },
-                'pos': {
-                    'batch_size': 100,
-                    'bert_finetune': False
-                },
-                'constituency': {
-                    'batch_size': 100
-                }
-            }
-            
-            nlp2 = stanza.Pipeline(
-                lang='id',
-                processors='tokenize,pos,constituency',
-                package="default",
-                processor_config=constituency_config,
-                use_gpu=False)  # Force CPU
+            processors=processors,
+            package="default",
+            use_gpu=False,
+            download_method=None)
 
-    BATCH_SIZE = 5000  # Reduced batch size
+    BATCH_SIZE = args.batch_size  # Use configurable batch size
     
     # Expand glob patterns and get file list
     file_paths = []
@@ -409,21 +357,38 @@ if __name__ == "__main__":
             logging.info("Use --list-subsets to see available subsets")
             sys.exit(1)
     
+    # If specific filename is specified, filter to only that file
+    if args.filename:
+        logging.info(f"Processing only specified filename: {args.filename}")
+        file_paths = [fp for fp in file_paths if os.path.basename(fp) == args.filename]
+        if not file_paths:
+            logging.error(f"Specified filename '{args.filename}' not found in the provided paths")
+            sys.exit(1)
     logging.info(f"Processing {len(file_paths)} files")
     
-    # Filter out already processed files if not forcing
+    # Filter out already processed files and JSON files if not forcing
     if not args.force:
         original_count = len(file_paths)
-        file_paths = [fp for fp in file_paths if not check_output_exists(fp, args.parse)]
+        # Filter out files that already have output files OR are JSON files themselves
+        file_paths = [fp for fp in file_paths if not check_output_exists(fp, args.parse) and not fp.endswith('.json')]
         skipped_count = original_count - len(file_paths)
         if skipped_count > 0:
-            logging.info(f"Skipped {skipped_count} already processed files (use --force to reprocess)")
+            logging.info(f"Skipped {skipped_count} files (already processed or JSON files)")
+    else:
+        # Even when forcing, still exclude JSON files from processing
+        original_count = len(file_paths)
+        file_paths = [fp for fp in file_paths if not fp.endswith('.json')]
+        excluded_count = original_count - len(file_paths)
+        if excluded_count > 0:
+            logging.info(f"Excluded {excluded_count} JSON files from processing")
     
     if not file_paths:
         logging.info("All files already processed. Use --force to reprocess.")
         sys.exit(0)
         
     # Iterate over BabyLM files
+    total_start_time = time.time()
+    
     for file_idx, file_path in enumerate(file_paths, 1):
         start_time = time.time()
         logging.info(f"Processing file {file_idx}/{len(file_paths)}: {file_path}")
@@ -446,7 +411,7 @@ if __name__ == "__main__":
 
         # Strip lines and join text
         logging.info("Concatenating lines...")
-        lines = [l.strip() for l in lines]
+        lines = [l.strip() for l in lines if l.strip()]  # Remove empty lines
         line_batches = [lines[i:i + BATCH_SIZE]
                         for i in range(0, len(lines), BATCH_SIZE)]
         text_batches = [" ".join(l) for l in line_batches]
@@ -456,15 +421,15 @@ if __name__ == "__main__":
 
         # Iterate over lines in file and track annotations
         line_annotations = []
-        logging.info("Segmenting and parsing text batches...")
+        logging.info("Segmenting and parsing text batches with single pipeline...")
         
         for batch_idx, text in enumerate(text_batches, 1):
             try:
                 logging.info(f"Processing batch {batch_idx}/{len(text_batches)}")
                 log_gpu_memory()
                 
-                # Use safe processing function
-                doc = safe_stanza_process(nlp1, text)
+                # OPTIMIZATION: Use single pipeline for everything (no double processing!)
+                doc = safe_stanza_process(nlp, text)
 
                 # Iterate over sents in the line and track annotations
                 sent_annotations = []
@@ -485,9 +450,14 @@ if __name__ == "__main__":
                         }
                         word_annotations.append(wa)  # Track word annotation
 
-                    # Get constituency parse if needed
+                    # OPTIMIZATION: Get constituency parse directly from processed sentence
+                    # No need to reprocess with separate pipeline!
                     if args.parse:
-                        constituency_parse = __get_constituency_parse(sent, nlp2)
+                        if hasattr(sent, 'constituency') and sent.constituency:
+                            constituency_parse = "(ROOT " + str(sent.constituency) + ")"
+                        else:
+                            constituency_parse = None
+                        
                         sa = {
                             'sent_text': sent.text,
                             'constituency_parse': constituency_parse,
@@ -505,8 +475,8 @@ if __name__ == "__main__":
                 }
                 line_annotations.append(la)  # Track line annotation
                 
-                # Clear GPU cache periodically
-                if batch_idx % 10 == 0:
+                # Clear GPU cache more frequently
+                if batch_idx % 5 == 0:  # More frequent cleanup
                     clear_gpu_cache()
                 
             except Exception as e:
@@ -520,7 +490,7 @@ if __name__ == "__main__":
         json_filename = os.path.splitext(file_path)[0] + ext
         try:
             with open(json_filename, "w") as outfile:
-                json.dump(line_annotations, outfile, indent=4)
+                json.dump(line_annotations, outfile, indent=2)  # Reduced indent for smaller files
             
             processing_time = time.time() - start_time
             logging.info(f"Successfully processed {file_path} in {processing_time:.2f} seconds")
@@ -534,8 +504,11 @@ if __name__ == "__main__":
         clear_gpu_cache()
         log_gpu_memory()
     
-    # Final cleanup
+    # Final cleanup and summary
+    total_time = time.time() - total_start_time
     logging.info("Processing complete. Performing final cleanup...")
+    logging.info(f"Total processing time: {total_time:.2f} seconds")
+    logging.info(f"Average time per file: {total_time/len(file_paths):.2f} seconds")
     clear_gpu_cache()
     log_gpu_memory()
     logging.info("All files processed successfully!")

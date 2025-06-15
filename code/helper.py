@@ -1,40 +1,67 @@
 import os
 import re
-import torch
-import logging
 import gc
+import torch
+import ctypes
+import logging
+import unicodedata
 from datetime import datetime
+
+WHITELIST = set()
+
+def remove_symbols(text: str, drop_marks: bool = True) -> str:
+    """
+    Remove every Unicode *Symbol* (category 'S…') and, if `drop_marks`
+    is True, every combining *Mark* ('M…').  Whitelist overrides both.
+    """
+    out = []
+    for ch in text:
+        cat = unicodedata.category(ch)
+        if cat.startswith('S') and ch not in WHITELIST:
+            continue
+        if drop_marks and cat.startswith('M'):
+            continue
+        out.append(ch)
+    return ''.join(out)
 
 def clean_text(text):
     """
     Clean text by removing formatting tags and normalizing content
     """
-    # Remove common subtitle/formatting tags (expanding the original set)
-    text = re.sub(r'{\\fn.*?}', '', text)  # Remove font formatting tags
-    text = re.sub(r'{\\fs.*?}', '', text)  # Remove font size tags
-    text = re.sub(r'{\\b.*?}', '', text)  # Remove bold tags
-    text = re.sub(r'{\\4cH.*?}', '', text)  # Remove color tags
-    text = re.sub(r'{\\4aH.*?}', '', text)  # Remove alpha tags
-    text = re.sub(r'{\\i.*?}', '', text)  # Remove italic tags
-    text = re.sub(r'{\\u.*?}', '', text)  # Remove underline tags
-    text = re.sub(r'{\\s.*?}', '', text)  # Remove strike-through tags
-    text = re.sub(r'{\\c.*?}', '', text)  # Remove color tags (alternate format)
-    text = re.sub(r'{\\pos\(.*?\)}', '', text)  # Remove positioning tags
-    text = re.sub(r'{\\an\d+}', '', text)  # Remove alignment tags
+    # ------------------------------------------------------------------
+    # 1. Strip common subtitle / styling tags, unicodes
+    # ------------------------------------------------------------------
+    text = re.sub(r'\{[^}]*\}', '', text)
+    text = remove_symbols(text, drop_marks=True)
+    text = re.sub(r'[♪♫♩♬♭♮♯∞★☆♥♦♠♣☀☁☂☃☠⚑⚡■]+', '', text)
+    text = re.sub(r'[\u2600-\u26FF\u2700-\u27BF]+', '', text)
+    text = re.sub(r'\[\d+\]', '', text)
+    text = re.sub(r'([^\w\s])\1{1,}', r'\1', text)
     
-    # Remove any remaining tags in the format {\\tag}
-    text = re.sub(r'{\\.*?}', '', text)
+    # ------------------------------------------------------------------
+    # 2. Remove repeated words
+    # ------------------------------------------------------------------
+    # 2-a  Repeated punctuation  (“????” → “?”)
+    text = re.sub(r'([?!.,؛—\-])\1{1,}', r'\1', text)
+
+    # 2-b  ≥3 identical words in a row  (“dan dan dan” → “dan”)
+    text = re.sub(r'\b(\w+)(?:\s+\1\b){2,}', r'\1', text, flags=re.IGNORECASE)
     
-    # Remove HTML/XML tags if present
-    text = re.sub(r'<.*?>', '', text)
-    
-    # Normalize whitespace
-    text = re.sub(r'\s+', ' ', text)  # Replace multiple spaces with single space
-    
-    # Final cleanup
-    text = text.strip()
-    
+    # ASCII & Unicode letters (e.g. ö, é)
+    # text = re.sub(r'([\p{L}])\1{3,}', r'\1\1\1', text, flags=re.UNICODE)
+
+    # 2-c  Extraneous spaces before punctuation  (“benar ?” → “benar?”)
+    text = re.sub(r'\s+([?!.,:;])', r'\1', text)
+
+    # ------------------------------------------------------------------
+    # 3. Whitespace tidy-up & final trim
+    # ------------------------------------------------------------------
+    text = re.sub(r'\s+([?!.,])', r'\1', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    if not re.search(r'[A-Za-zÀ-ȕ0-9]', text):
+        return ''
     return text
+
 
 def write_data(input_text, output_file):
 
@@ -60,8 +87,37 @@ def read_data(input_file):
         return text
     except FileNotFoundError:
         print("Error, file not found! check the filepath again, make sure it exist.")
-    
 
+def aggressive_memory_cleanup():
+    """
+    Perform aggressive memory cleanup to force PyTorch to release reserved memory
+    """
+    if not torch.cuda.is_available():
+        return
+    
+    # Clear all caches
+    torch.cuda.empty_cache()
+    
+    # Force garbage collection multiple times
+    for _ in range(3):
+        gc.collect()
+    
+    # Synchronize CUDA operations
+    torch.cuda.synchronize()
+    
+    # Clear cache again after sync
+    torch.cuda.empty_cache()
+    
+    # Additional memory management for CUDA context
+    try:
+        # Reset memory stats to help with internal bookkeeping
+        torch.cuda.reset_peak_memory_stats()
+        torch.cuda.reset_accumulated_memory_stats()
+    except:
+        pass
+    
+    # Force Python garbage collection one more time
+    gc.collect()
 
 def setup_logging(log_dir='../logs', logname='babylm_nllb_translation'):
     """
@@ -127,7 +183,7 @@ def get_gpu_memory_info():
 
 def log_gpu_memory(prefix=""):
     """
-    Log current GPU memory usage
+    Log current GPU memory usage with automatic cleanup if memory is high
     """
     if not torch.cuda.is_available():
         logging.info("GPU not available")
@@ -140,6 +196,18 @@ def log_gpu_memory(prefix=""):
                 f"Free: {memory_info['free']:.2f}GB"
     logging.info(memory_str)
     
+    # Perform aggressive cleanup if reserved memory is high (>90% of total)
+    reserved_ratio = memory_info['reserved'] / memory_info['total']
+    if reserved_ratio > 0.9:
+        logging.warning(f"High reserved memory usage ({reserved_ratio:.1%}). Performing aggressive cleanup...")
+        aggressive_memory_cleanup()
+        
+        # Log memory after cleanup
+        memory_info_after = get_gpu_memory_info()
+        memory_str_after = f"After cleanup - Reserved: {memory_info_after['reserved']:.2f}GB, " \
+                          f"Free: {memory_info_after['free']:.2f}GB"
+        logging.info(memory_str_after)
+    
     return memory_str
 
 def calculate_optimal_batch_size(model, tokenizer, device, target_memory_usage=0.8, max_length=512, initial_batch_size=16):
@@ -149,6 +217,9 @@ def calculate_optimal_batch_size(model, tokenizer, device, target_memory_usage=0
     if not torch.cuda.is_available():
         logging.info("GPU not available, using default batch size")
         return initial_batch_size
+    
+    # Perform cleanup before calculation
+    aggressive_memory_cleanup()
     
     memory_info = get_gpu_memory_info()
     total_memory = memory_info["total"]
@@ -175,7 +246,7 @@ def calculate_optimal_batch_size(model, tokenizer, device, target_memory_usage=0
     
     # Generate translation to see memory usage
     with torch.no_grad():
-        model.generate(
+        generated = model.generate(
             input_ids=input_ids,
             attention_mask=attention_mask,
             max_length=max_length,
@@ -188,10 +259,9 @@ def calculate_optimal_batch_size(model, tokenizer, device, target_memory_usage=0
     current_memory = torch.cuda.memory_allocated(0) / (1024**3)
     memory_per_sample = (current_memory - initial_memory) / batch_size
     
-    # Free up memory
-    del input_ids, attention_mask, encoded
-    torch.cuda.empty_cache()
-    gc.collect()
+    # Free up memory aggressively
+    del input_ids, attention_mask, encoded, generated
+    aggressive_memory_cleanup()
     
     # Calculate optimal batch size (with a safety factor)
     available_memory = total_memory * target_memory_usage - initial_memory
@@ -205,6 +275,26 @@ def calculate_optimal_batch_size(model, tokenizer, device, target_memory_usage=0
     
     return optimal_batch_size
 
+def memory_efficient_cleanup(batch_interval=10):
+    """
+    Perform memory cleanup at regular intervals during batch processing
+    Returns True if cleanup was performed, False otherwise
+    """
+    if not torch.cuda.is_available():
+        return False
+    
+    memory_info = get_gpu_memory_info()
+    reserved_ratio = memory_info['reserved'] / memory_info['total']
+    
+    # More frequent cleanup if memory usage is high
+    cleanup_threshold = 0.85 if reserved_ratio > 0.9 else 0.9
+    
+    if reserved_ratio > cleanup_threshold:
+        logging.info(f"Performing scheduled memory cleanup (reserved: {reserved_ratio:.1%})")
+        aggressive_memory_cleanup()
+        return True
+    
+    return False
 
 def get_pending_files(source_files, target_dir):
     """

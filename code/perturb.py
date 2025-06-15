@@ -1,5 +1,6 @@
 # perturb.py
-# Author: Julie Kallini
+# Original Author: Julie Kallini
+# Adjusted/modified by: Bastian Farandy
 
 # For importing utils
 import sys
@@ -226,13 +227,13 @@ if __name__ == "__main__":
         prog='Perturb BabyLM dataset',
         description='Perturb BabyLM dataset by altering POS-tagged data')
     parser.add_argument('perturbation_type',
-                        default='shuffle_control',
+                        default='shuffle_local3',
                         const='all',
                         nargs='?',
                         choices=PERTURBATIONS.keys(),
                         help='Perturbation function used to transform BabyLM dataset')
     parser.add_argument('babylm_dataset',
-                        default='10M',
+                        default='test',
                         const='all',
                         nargs='?',
                         choices=BABYLM_SPLITS,
@@ -245,9 +246,10 @@ if __name__ == "__main__":
 
     # Load dataset (only json files containing tagged data)
     babylm_dataset = args.babylm_dataset
-    json_ext = "_parsed.json"
-    babylm_data = glob(f"{BABYLM_DATA_PATH}/babylm_data/babylm_{babylm_dataset}/*{json_ext}")
-    print(f"processing: {f"{BABYLM_DATA_PATH}/babylm_data/babylm_{babylm_dataset}/*{json_ext}"}; found: {len(babylm_data)}")
+    # json_ext = "_parsed.json"
+    json_ext = ".json"
+    babylm_data = glob(f"{BABYLM_DATA_PATH}/babylm_{babylm_dataset}/*{json_ext}")
+    print(f"processing: {f'{BABYLM_DATA_PATH}/babylm_{babylm_dataset}/*{json_ext}'}; found: {len(babylm_data)}")
 
     # Get perturbation, affect, and filter functions
     perturbation_function = PERTURBATIONS[args.perturbation_type]['perturbation_function']

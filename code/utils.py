@@ -32,11 +32,12 @@ GENRES = {
 }
 CHECKPOINT_WRITE_PATH = "/home/s2587034/pretrained_checkpoints/babylm_models"
 CHECKPOINT_READ_PATH = "/home/s2587034/pretrained_checkpoints/babylm_models"
-BABYLM_DATA_PATH = "../../dataset/clean_data/nllb/babylm_data_ind"
+BABYLM_DATA_PATH = "/home/s2587034/dissertation/dataset/clean_data/nllb/babylm_data_ind"
 MARKER_HOP_SING = "🅂"
 MARKER_HOP_PLUR = "🄿"
 MARKER_REV = "🅁"
-BOS_TOKEN = "<BOS_TOKEN>"
+# BOS_TOKEN = "<BOS_TOKEN>"
+BOS_TOKEN = "<|endoftext|>" #match the trained custom tokenizer
 # PART_TOKENS = set(["n't", "'ll", "'s", "'re", "'ve", "'m"])
 # change PART_TOKENS to Indonesian
 PART_TOKENS = set(["ku", "mu", "nya", "lah", "kah", "tah", "pun"])
@@ -67,7 +68,8 @@ def write_file(directory, filename, lines):
 
 
 def get_gpt2_tokenizer_with_markers(marker_list):
-    tokenizer = AutoTokenizer.from_pretrained("gpt2")
+    # tokenizer = AutoTokenizer.from_pretrained("gpt2")
+    tokenizer = AutoTokenizer.from_pretrained("/home/s2587034/dissertation/models/indo_tokenizer")
 
     # If no new markers to add, return normal tokenizer
     if len(marker_list) == 0:

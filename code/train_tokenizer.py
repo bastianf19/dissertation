@@ -1,74 +1,72 @@
-from tokenizers import Tokenizer
-from tokenizers.models import BPE
-from tokenizers.trainers import BpeTrainer
-from tokenizers.pre_tokenizers import Whitespace
-from tokenizers.processors import TemplateProcessing
-import os
+from tokenizers import Tokenizer, models, trainers, pre_tokenizers
+from tokenizers.pre_tokenizers import ByteLevel
+from tokenizers.normalizers import NFD, StripAccents, Sequence
+from tokenizers.decoders import ByteLevel as ByteLevelDecoder
+import glob
+from transformers import PreTrainedTokenizerFast, AutoTokenizer
 
-def train_indonesian_tokenizer():
-    # Initialize a tokenizer
-    tokenizer = Tokenizer(BPE())
+def train_tokenizer():
+    tokenizer = Tokenizer(models.BPE(unk_token="[UNK]"))
+    tokenizer.normalizer = Sequence([NFD(), StripAccents()])
+    tokenizer.pre_tokenizer = ByteLevel(add_prefix_space=False)
     
-    # Use whitespace pre-tokenizer
-    tokenizer.pre_tokenizer = Whitespace()
-    
-    # Define special tokens
-    special_tokens = ["<s>", "</s>", "<pad>", "<unk>", "<mask>"]
-    
-    # Create a trainer
-    trainer = BpeTrainer(
-        vocab_size=50000,  # Increased based on larger dataset size
+    trainer = trainers.BpeTrainer(
+        vocab_size=50257,
         min_frequency=2,
-        special_tokens=special_tokens,
         show_progress=True,
-    )
-    
-    # Get all text files from the dataset directory
-    dataset_paths = []
-    base_dir = "/home/s2587034/dissertation/dataset/clean_data/nllb/babylm_data_ind"
-    
-    # Add files from all relevant directories
-    directories = [
-        "babylm_10M",
-        "babylm_100M",
-        "babylm_dev",
-        "babylm_test"
-    ]
-    
-    for directory in directories:
-        dir_path = os.path.join(base_dir, directory)
-        if os.path.exists(dir_path):
-            for root, dirs, files in os.walk(dir_path):
-                for file in files:
-                    if file.endswith(".train") or file.endswith(".dev") or file.endswith(".test"):
-                        dataset_paths.append(os.path.join(root, file))
-    
-    print(f"Training tokenizer on {len(dataset_paths)} files")
-    print("Files included:")
-    for path in dataset_paths:
-        print(path)
-    
-    # Train the tokenizer
-    tokenizer.train(dataset_paths, trainer)
-    
-    # Add special tokens
-    tokenizer.add_special_tokens(special_tokens)
-    
-    # Add post-processing
-    tokenizer.post_processor = TemplateProcessing(
-        single="<s> $A </s>",
         special_tokens=[
-            ("<s>", 0),
-            ("</s>", 1)
-        ]
+            "<|endoftext|>",
+            "[PAD]",
+        ],
+        initial_alphabet=ByteLevel.alphabet()
     )
-    
-    # Save the tokenizer
-    output_dir = "/home/s2587034/dissertation/models/custom_tokenizer"
-    os.makedirs(output_dir, exist_ok=True)
-    
-    tokenizer.save(os.path.join(output_dir, "tokenizer.json"))
-    print(f"Tokenizer saved to {output_dir}")
+    files = glob.glob("/home/s2587034/dissertation/dataset/clean_data/nllb/babylm_data_ind/babylm_100M/*.train")
+    tokenizer.train(files, trainer)
+    tokenizer.decoder = ByteLevelDecoder()
+
+    # Wrap & save in HF format
+    hf_tok = PreTrainedTokenizerFast(
+        tokenizer_object=tokenizer,
+        unk_token="<|endoftext|>",
+        pad_token="[PAD]",
+        eos_token="<|endoftext|>",
+        bos_token="<|endoftext|>"
+    )
+    # save tokenizer
+    save_dir = "/home/s2587034/dissertation/models/indo_tokenizer"
+    hf_tok.save_pretrained(save_dir)
+
+def test_tokenizer():
+    try:
+        # tokenizer = AutoTokenizer.from_pretrained("/home/s2587034/dissertation/models/indo_tokenizer")
+        tokenizer = AutoTokenizer.from_pretrained("gpt2")
+        
+        test_sentences = [
+                "Kau ingin ini kembali ke tanganmu.",
+                "Kau ingin itu di tanganku mungkin.",
+                "Mari kita buka jari-jarimu sedikit.",
+                "Dapatkah aku membantumu dengan membuka jari-jarimu?"
+            ]
+
+        print("\n===== Tokenizer Test Output =====")
+        for sent in test_sentences:
+            # Get the encoded output
+            encoded = tokenizer(sent, return_tensors=None)
+            tokens = tokenizer.tokenize(sent)
+            
+            print("\nOriginal:", sent)
+            print("Tokens:", tokens)
+            print("Token IDs:", encoded['input_ids'])
+            print("Attention Mask:", encoded.get('attention_mask', 'N/A'))
+            print("Decoded:", tokenizer.decode(encoded['input_ids']))
+
+        print("\n===== All tests completed successfully =====")
+        
+    except Exception as e:
+        print(f"Error loading tokenizer: {e}")
+        raise e
+
 
 if __name__ == "__main__":
-    train_indonesian_tokenizer()
+    # train_tokenizer()
+    test_tokenizer()

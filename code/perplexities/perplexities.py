@@ -154,26 +154,30 @@ if __name__ == "__main__":
     BATCH_SIZE = 8
     device = "cuda"
     for ckpt in CHECKPOINTS:
-        print(f"Checkpoint: {ckpt}")
+        try:
+            print(f"Checkpoint: {ckpt}")
 
-        # Load model
-        if args.no_pos_encodings:
-            model = GPT2NoPositionalEncodingLMHeadModel.from_pretrained(
+            # Load model
+            if args.no_pos_encodings:
+                model = GPT2NoPositionalEncodingLMHeadModel.from_pretrained(
+                    model_path + str(ckpt)).to(device)
+            else:
+                model = GPT2LMHeadModel.from_pretrained(
                 model_path + str(ckpt)).to(device)
-        else:
-            model = GPT2LMHeadModel.from_pretrained(
-            model_path + str(ckpt)).to(device)
 
-        # Get perplexities
-        perplexities = []
-        for i in tqdm(range(0, len(token_sequences), BATCH_SIZE)):
-            batch = token_sequences[i:i+BATCH_SIZE]
-            ppls = get_perplexities(
-                model, batch, gpt2_original_tokenizer.eos_token_id)
-            perplexities.extend(ppls)
+            # Get perplexities
+            perplexities = []
+            for i in tqdm(range(0, len(token_sequences), BATCH_SIZE)):
+                batch = token_sequences[i:i+BATCH_SIZE]
+                ppls = get_perplexities(
+                    model, batch, gpt2_original_tokenizer.eos_token_id)
+                perplexities.extend(ppls)
 
-        # Add ppls to df
-        ppl_df[f'Perplexities (ckpt {ckpt})'] = perplexities
+            # Add ppls to df
+            ppl_df[f'Perplexities (ckpt {ckpt})'] = perplexities
+        except Exception as e:
+            print(f"Checkpoint: {ckpt}: error:{e}")
+            break
 
     # Write results to CSV
     directory = f"perplexity_results/{args.perturbation_type}_{args.train_set}{no_pos_encodings_underscore}"

@@ -22,7 +22,9 @@ _PERTURBATIONS = ["hop_control", "hop_tokens4", "hop_words4",
                   "shuffle_even_odd"]
 _RANDOM_SEEDS = [0, 14, 41, 53, 96]
 _TRAIN_SETS = ["100M", "10M"]
-_EOS_TOKEN_ID = 50256
+# _EOS_TOKEN_ID = 50256
+# _EOS_TOKEN_ID = gpt2_original_tokenizer.eos_token_id
+_EOS_TOKEN_ID = 0 # follow the custom tokenizer
 
 
 class BabyConfig(datasets.BuilderConfig):

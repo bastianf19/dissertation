@@ -16,8 +16,8 @@ group: babylm-perturbation-experiments
 
 # Artifacts & Caching
 artifacts:
-    cache_dir: pretrained_checkpoint/babylm_models/babylm_shuffle_control_100M_randinit/babylm_shuffle_control_100M_randinit_seed0/artifacts
-    run_dir: pretrained_checkpoint/babylm_models/babylm_shuffle_control_100M_randinit/babylm_shuffle_control_100M_randinit_seed0/runs
+    cache_dir: /home/s2587034/pretrained_checkpoints/babylm_models/babylm_shuffle_control_100M_randinit/babylm_shuffle_control_100M_randinit_seed0/artifacts
+    run_dir: /home/s2587034/pretrained_checkpoints/babylm_models/babylm_shuffle_control_100M_randinit/babylm_shuffle_control_100M_randinit_seed0/runs
 
 # Save Effective Batch Size for Easy Handling ==> Main Code asserts infra + training_config results in this!
 effective_bsz: 512

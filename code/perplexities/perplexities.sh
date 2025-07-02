@@ -41,11 +41,11 @@ Run perplexities for each perturbation type
 # echo "
 # "
 
-# COMMAND="python3 perplexities.py reverse_full reverse_full 100M $1 randinit $NO_POS_ENCODINGS"
-# echo $COMMAND
-# eval $COMMAND
-# echo "
-# "
+COMMAND="python3 perplexities.py reverse_full reverse_full 100M $1 randinit $NO_POS_ENCODINGS"
+echo $COMMAND
+eval $COMMAND
+echo "
+"
 
 # COMMAND="python3 perplexities.py reverse_partial reverse_partial 100M $1 randinit $NO_POS_ENCODINGS"
 # echo $COMMAND
@@ -53,23 +53,23 @@ Run perplexities for each perturbation type
 # echo "
 # "
 
-COMMAND="python3 perplexities.py shuffle_control shuffle_control 100M $1 randinit $NO_POS_ENCODINGS"
-echo $COMMAND
-eval $COMMAND
-echo "
-"
+# COMMAND="python3 perplexities.py shuffle_control shuffle_control 100M $1 randinit $NO_POS_ENCODINGS"
+# echo $COMMAND
+# eval $COMMAND
+# echo "
+# "
 
-COMMAND="python3 perplexities.py shuffle_nondeterministic shuffle_nondeterministic 100M $1 randinit $NO_POS_ENCODINGS"
-echo $COMMAND
-eval $COMMAND
-echo "
-"
+# COMMAND="python3 perplexities.py shuffle_nondeterministic shuffle_nondeterministic 100M $1 randinit $NO_POS_ENCODINGS"
+# echo $COMMAND
+# eval $COMMAND
+# echo "
+# "
 
-COMMAND="python3 perplexities.py shuffle_deterministic21 shuffle_deterministic21 100M $1 randinit $NO_POS_ENCODINGS"
-echo $COMMAND
-eval $COMMAND
-echo "
-"
+# COMMAND="python3 perplexities.py shuffle_deterministic21 shuffle_deterministic21 100M $1 randinit $NO_POS_ENCODINGS"
+# echo $COMMAND
+# eval $COMMAND
+# echo "
+# "
 
 # COMMAND="python3 perplexities.py shuffle_deterministic21 shuffle_deterministic57 100M $1 randinit $NO_POS_ENCODINGS"
 # echo $COMMAND

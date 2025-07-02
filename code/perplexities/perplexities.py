@@ -8,7 +8,7 @@ sys.path.append("..")
 from transformers import GPT2LMHeadModel
 from gpt2_no_positional_encoding_model import GPT2NoPositionalEncodingLMHeadModel
 from utils import CHECKPOINT_READ_PATH, PERTURBATIONS, BABYLM_DATA_PATH, \
-    PAREN_MODELS, gpt2_original_tokenizer
+    PAREN_MODELS, gpt2_original_tokenizer, gpt2_rev_tokenizer
 from tqdm import tqdm
 from glob import glob
 from numpy.random import default_rng
@@ -144,14 +144,20 @@ if __name__ == "__main__":
             continue
 
     # For logging/debugging, include decoded sentence
-    test_sents = [gpt2_original_tokenizer.decode(
-        toks) for toks in token_sequences]
+    print("Decoding sentences...")
+    if "reverse" not in args.test_perturbation_type:
+        test_sents = [gpt2_original_tokenizer.decode(
+            toks) for toks in token_sequences]
+    else:
+        print("reverse detected, decoding with reverse tokenizer")
+        test_sents = [gpt2_rev_tokenizer.decode(
+            toks) for toks in token_sequences]
 
     ppl_df = pd.DataFrame({
         "Sentences": test_sents
     })
 
-    BATCH_SIZE = 8
+    BATCH_SIZE = 4
     device = "cuda"
     for ckpt in CHECKPOINTS:
         try:
@@ -169,10 +175,15 @@ if __name__ == "__main__":
             perplexities = []
             for i in tqdm(range(0, len(token_sequences), BATCH_SIZE)):
                 batch = token_sequences[i:i+BATCH_SIZE]
-                ppls = get_perplexities(
-                    model, batch, gpt2_original_tokenizer.eos_token_id)
-                perplexities.extend(ppls)
-
+                if "reverse" not in args.test_perturbation_type:
+                    ppls = get_perplexities(
+                        model, batch, gpt2_original_tokenizer.eos_token_id)
+                    perplexities.extend(ppls)
+                else:
+                    print("reverse detected, getting perplexities with reverse tokenizer")
+                    ppls = get_perplexities(
+                        model, batch, gpt2_rev_tokenizer.eos_token_id)
+                    perplexities.extend(ppls)
             # Add ppls to df
             ppl_df[f'Perplexities (ckpt {ckpt})'] = perplexities
         except Exception as e:

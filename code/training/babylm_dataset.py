@@ -13,7 +13,7 @@ logger = datasets.logging.get_logger(__name__)
 _DESCRIPTION = """\
     Pre-tokenized BabyLM HuggingFace dataset for verb perturbations.
 """
-_PERTURBED_DATA_PATH = "../dissertation/dataset/clean_data/nllb/babylm_data_ind/babylm_data_perturbed"
+_PERTURBED_DATA_PATH = "/home/s2587034/dissertation/dataset/clean_data/nllb/babylm_data_ind/babylm_data_perturbed"
 _PERTURBATIONS = ["hop_control", "hop_tokens4", "hop_words4",
                   "reverse_control", "reverse_partial", "reverse_full",
                   "shuffle_control", "shuffle_nondeterministic",

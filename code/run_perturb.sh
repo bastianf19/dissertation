@@ -3,7 +3,7 @@
 # Define arrays for perturbations and datasets
 perturbations=(
     # "shuffle_control"
-    # "reverse_control"
+    "reverse_control"
     # "shuffle_nondeterministic"
     # "shuffle_deterministic21"
     # "shuffle_local3"
@@ -11,7 +11,7 @@ perturbations=(
     # "shuffle_local10"
     # "shuffle_even_odd"
     # "reverse_partial"
-    "reverse_full"
+    # "reverse_full"
 )
 
 datasets=(

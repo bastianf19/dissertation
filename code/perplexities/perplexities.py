@@ -26,7 +26,8 @@ CHECKPOINTS = list(range(100, MAX_TRAINING_STEPS+1, 100))
 def create_attention_mask(token_lists):
     seq_length = max([len(i) for i in token_lists])
     batch_size = len(token_lists)
-    mask = torch.full((batch_size, seq_length), 0)
+    # mask = torch.full((batch_size, seq_length), 0)
+    mask = torch.zeros((batch_size, seq_length), dtype=torch.long)
 
     for i, tokens in enumerate(token_lists):
         mask[i, 0:len(tokens)] = 1
@@ -39,12 +40,20 @@ def create_input_ids(token_lists, pad_token_id):
     return torch.tensor(list(padded))
 
 
-def get_perplexities(model, token_lists, pad_token_id, device="cuda"):
-
+def get_perplexities(model, token_lists, pad_token_id, device="cuda", max_seq_length=1024):
+    
+    token_lists = [tokens[:max_seq_length] for tokens in token_lists if len(tokens) > 0]
+    if not token_lists:
+        return []
+    
     # Prepare data
+    # print(f"Input token_lists lengths: {[len(tokens) for tokens in token_lists]}")
+
     input_ids = create_input_ids(token_lists, pad_token_id).to(device)
+    # print(f"input_ids shape: {input_ids.shape}")
     labels = input_ids.clone()  # GPT-2 uses input as labels for CLM task
     attention_mask = create_attention_mask(token_lists).to(device)
+    # print(f"attention_mask shape: {attention_mask.shape}")
 
     # Forward pass
     outputs = model(input_ids=input_ids, labels=labels,
@@ -174,13 +183,22 @@ if __name__ == "__main__":
             # Get perplexities
             perplexities = []
             for i in tqdm(range(0, len(token_sequences), BATCH_SIZE)):
-                batch = token_sequences[i:i+BATCH_SIZE]
+                # batch = token_sequences[i:i+BATCH_SIZE]
+                batch = [tokens for tokens in token_sequences[i:i+BATCH_SIZE] if len(tokens) > 0]
+                if not batch:
+                    continue
+                
+                # max_len = max(len(tokens) for tokens in batch)
+                # if max_len > 1024:
+                #     print(f"Skipping batch with sequence length {max_len} > 1024")
+                #     continue
+                
                 if "reverse" not in args.test_perturbation_type:
                     ppls = get_perplexities(
                         model, batch, gpt2_original_tokenizer.eos_token_id)
                     perplexities.extend(ppls)
                 else:
-                    print("reverse detected, getting perplexities with reverse tokenizer")
+                    # print("reverse detected, getting perplexities with reverse tokenizer")
                     ppls = get_perplexities(
                         model, batch, gpt2_rev_tokenizer.eos_token_id)
                     perplexities.extend(ppls)

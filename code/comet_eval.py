@@ -112,16 +112,16 @@ def main():
     if args.clean == 1:
         patterns = [
             # For babylm_10M
-            {
-                "source": "babylm_data/babylm_10M/*",
-                "target": "clean_data/nllb/babylm_data_ind/babylm_10M/*",
-                "prefix": "nllb_babylm_10M"
-            },
-            {
-                "source": "babylm_data/babylm_10M/*",
-                "target": "clean_data/opus-mt/babylm_data_id/babylm_10M/*",
-                "prefix": "opus_babylm_10M"
-            },
+            # {
+            #     "source": "babylm_data/babylm_10M/*",
+            #     "target": "clean_data/nllb/babylm_data_ind/babylm_10M/*",
+            #     "prefix": "nllb_babylm_10M"
+            # },
+            # {
+            #     "source": "babylm_data/babylm_10M/*",
+            #     "target": "clean_data/opus-mt/babylm_data_id/babylm_10M/*",
+            #     "prefix": "opus_babylm_10M"
+            # },
             # For babylm_100M
             {
                 "source": "babylm_data/babylm_100M/*",
@@ -159,16 +159,16 @@ def main():
     else:
         patterns = [
             # For babylm_10M
-            {
-                "source": "babylm_data/babylm_10M/*",
-                "target": "translated/nllb/babylm_data_ind/babylm_10M/*",
-                "prefix": "nllb_babylm_10M"
-            },
-            {
-                "source": "babylm_data/babylm_10M/*",
-                "target": "translated/opus-mt/babylm_data_id/babylm_10M/*",
-                "prefix": "opus_babylm_10M"
-            },
+            # {
+            #     "source": "babylm_data/babylm_10M/*",
+            #     "target": "translated/nllb/babylm_data_ind/babylm_10M/*",
+            #     "prefix": "nllb_babylm_10M"
+            # },
+            # {
+            #     "source": "babylm_data/babylm_10M/*",
+            #     "target": "translated/opus-mt/babylm_data_id/babylm_10M/*",
+            #     "prefix": "opus_babylm_10M"
+            # },
             # For babylm_100M
             {
                 "source": "babylm_data/babylm_100M/*",

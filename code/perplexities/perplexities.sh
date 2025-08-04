@@ -41,35 +41,35 @@ eval $COMMAND
 echo "
 "
 
-# COMMAND="python3 perplexities.py reverse_full reverse_full 100M $1 randinit $NO_POS_ENCODINGS"
-# echo $COMMAND
-# eval $COMMAND
-# echo "
-# "
+COMMAND="python3 perplexities.py reverse_full reverse_full 100M $1 randinit $NO_POS_ENCODINGS"
+echo $COMMAND
+eval $COMMAND
+echo "
+"
 
-# COMMAND="python3 perplexities.py reverse_partial reverse_partial 100M $1 randinit $NO_POS_ENCODINGS"
-# echo $COMMAND
-# eval $COMMAND
-# echo "
-# "
+COMMAND="python3 perplexities.py reverse_partial reverse_partial 100M $1 randinit $NO_POS_ENCODINGS"
+echo $COMMAND
+eval $COMMAND
+echo "
+"
 
-# COMMAND="python3 perplexities.py shuffle_control shuffle_control 100M $1 randinit $NO_POS_ENCODINGS"
-# echo $COMMAND
-# eval $COMMAND
-# echo "
-# "
+COMMAND="python3 perplexities.py shuffle_control shuffle_control 100M $1 randinit $NO_POS_ENCODINGS"
+echo $COMMAND
+eval $COMMAND
+echo "
+"
 
-# COMMAND="python3 perplexities.py shuffle_nondeterministic shuffle_nondeterministic 100M $1 randinit $NO_POS_ENCODINGS"
-# echo $COMMAND
-# eval $COMMAND
-# echo "
-# "
+COMMAND="python3 perplexities.py shuffle_nondeterministic shuffle_nondeterministic 100M $1 randinit $NO_POS_ENCODINGS"
+echo $COMMAND
+eval $COMMAND
+echo "
+"
 
-# COMMAND="python3 perplexities.py shuffle_deterministic21 shuffle_deterministic21 100M $1 randinit $NO_POS_ENCODINGS"
-# echo $COMMAND
-# eval $COMMAND
-# echo "
-# "
+COMMAND="python3 perplexities.py shuffle_deterministic21 shuffle_deterministic21 100M $1 randinit $NO_POS_ENCODINGS"
+echo $COMMAND
+eval $COMMAND
+echo "
+"
 
 # COMMAND="python3 perplexities.py shuffle_deterministic21 shuffle_deterministic57 100M $1 randinit $NO_POS_ENCODINGS"
 # echo $COMMAND
@@ -137,29 +137,29 @@ echo "
 # echo "
 # "
 
-# COMMAND="python3 perplexities.py shuffle_local3 shuffle_local3 100M $1 randinit $NO_POS_ENCODINGS"
-# echo $COMMAND
-# eval $COMMAND
-# echo "
-# "
+COMMAND="python3 perplexities.py shuffle_local3 shuffle_local3 100M $1 randinit $NO_POS_ENCODINGS"
+echo $COMMAND
+eval $COMMAND
+echo "
+"
 
-# COMMAND="python3 perplexities.py shuffle_local5 shuffle_local5 100M $1 randinit $NO_POS_ENCODINGS"
-# echo $COMMAND
-# eval $COMMAND
-# echo "
-# "
+COMMAND="python3 perplexities.py shuffle_local5 shuffle_local5 100M $1 randinit $NO_POS_ENCODINGS"
+echo $COMMAND
+eval $COMMAND
+echo "
+"
 
-# COMMAND="python3 perplexities.py shuffle_local10 shuffle_local10 100M $1 randinit $NO_POS_ENCODINGS"
-# echo $COMMAND
-# eval $COMMAND
-# echo "
-# "
+COMMAND="python3 perplexities.py shuffle_local10 shuffle_local10 100M $1 randinit $NO_POS_ENCODINGS"
+echo $COMMAND
+eval $COMMAND
+echo "
+"
 
-# COMMAND="python3 perplexities.py shuffle_even_odd shuffle_even_odd 100M $1 randinit $NO_POS_ENCODINGS"
-# echo $COMMAND
-# eval $COMMAND
-# echo "
-# "
+COMMAND="python3 perplexities.py shuffle_even_odd shuffle_even_odd 100M $1 randinit $NO_POS_ENCODINGS"
+echo $COMMAND
+eval $COMMAND
+echo "
+"
 
 echo "
 -------------------------------------------------------------------------------

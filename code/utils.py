@@ -30,17 +30,24 @@ GENRES = {
     "switchboard": "Switchboard Dialog Act Corpus",
     "wikipedia": "Wikipedia"
 }
-CHECKPOINT_WRITE_PATH = "/home/s2587034/pretrained_checkpoints/babylm_models"
-CHECKPOINT_READ_PATH = "/home/s2587034/pretrained_checkpoints/babylm_models"
-BABYLM_DATA_PATH = "/home/s2587034/dissertation/dataset/clean_data/nllb/babylm_data_ind"
+# Indonesian
+# CHECKPOINT_WRITE_PATH = "/home/s2587034/pretrained_checkpoints/babylm_models"
+# CHECKPOINT_READ_PATH = "/home/s2587034/pretrained_checkpoints/babylm_models"
+# BABYLM_DATA_PATH = "/home/s2587034/dissertation/dataset/clean_data/nllb/babylm_data_ind"
+# BOS_TOKEN = "<|endoftext|>" #match the trained custom tokenizer
+## change PART_TOKENS to Indonesian
+# PART_TOKENS = set(["ku", "mu", "nya", "lah", "kah", "tah", "pun"])
+
+# Original English BabyLM
+CHECKPOINT_WRITE_PATH = "/home/s2587034/pretrained_checkpoints/babylm_models_en" #original babylm
+CHECKPOINT_READ_PATH = "/home/s2587034/pretrained_checkpoints/babylm_models_en" #original babylm
+BABYLM_DATA_PATH = "/home/s2587034/dissertation/dataset/babylm_data" #original babylm
+BOS_TOKEN = "<BOS_TOKEN>"
+PART_TOKENS = set(["n't", "'ll", "'s", "'re", "'ve", "'m"])
+
 MARKER_HOP_SING = "🅂"
 MARKER_HOP_PLUR = "🄿"
 MARKER_REV = "🅁"
-# BOS_TOKEN = "<BOS_TOKEN>"
-BOS_TOKEN = "<|endoftext|>" #match the trained custom tokenizer
-# PART_TOKENS = set(["n't", "'ll", "'s", "'re", "'ve", "'m"])
-# change PART_TOKENS to Indonesian
-PART_TOKENS = set(["ku", "mu", "nya", "lah", "kah", "tah", "pun"])
 PUNCT_TOKENS = set(punctuation)
 
 
@@ -68,8 +75,8 @@ def write_file(directory, filename, lines):
 
 
 def get_gpt2_tokenizer_with_markers(marker_list):
-    # tokenizer = AutoTokenizer.from_pretrained("gpt2")
-    tokenizer = AutoTokenizer.from_pretrained("/home/s2587034/dissertation/models/indo_tokenizer")
+    tokenizer = AutoTokenizer.from_pretrained("gpt2") # default babylm
+    # tokenizer = AutoTokenizer.from_pretrained("/home/s2587034/dissertation/models/indo_tokenizer")
 
     # If no new markers to add, return normal tokenizer
     if len(marker_list) == 0:

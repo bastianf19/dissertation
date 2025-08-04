@@ -10,8 +10,8 @@ perturbations=(
     # "shuffle_local5"
     # "shuffle_local10"
     # "shuffle_even_odd"
-    # "reverse_partial"
-    # "reverse_full"
+    "reverse_partial"
+    "reverse_full"
 )
 
 datasets=(

@@ -1,0 +1,709 @@
+{
+  "total": 60,
+  "correct": 35,
+  "by_category": {
+    "subject_relatives_and_demonstratives": {
+      "total": 10,
+      "correct": 2,
+      "accuracy": 0.2
+    },
+    "object_relatives_and_demonstratives": {
+      "total": 10,
+      "correct": 3,
+      "accuracy": 0.3
+    },
+    "wh-movement_with_adjunct_islands_and_coordinate_islands": {
+      "total": 10,
+      "correct": 9,
+      "accuracy": 0.9
+    },
+    "wh-movement_with_left_branch_condition": {
+      "total": 10,
+      "correct": 5,
+      "accuracy": 0.5
+    },
+    "topicalization_with_left_branch_condition": {
+      "total": 10,
+      "correct": 6,
+      "accuracy": 0.6
+    },
+    "verb_phrase_ellipsis": {
+      "total": 10,
+      "correct": 10,
+      "accuracy": 1.0
+    }
+  },
+  "by_phenomenon": {
+    "filler-gap_dependencies": {
+      "total": 60,
+      "correct": 35,
+      "accuracy": 0.5833333333333334
+    }
+  },
+  "examples": [
+    {
+      "id": 0,
+      "correct": "Lelaki yang membeli buku ini pintar sekali",
+      "wrong": "Lelaki yang itu membeli buku ini pintar sekali",
+      "ppl_correct": 5765639.5,
+      "ppl_wrong": 5313106.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "subject_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 1,
+      "correct": "Pedagang kaki lima yang menjual makanan di pinggir jalan itu cantik sekali",
+      "wrong": "Pedagang kaki lima yang itu menjual makanan di pinggir jalan itu cantik sekali",
+      "ppl_correct": 7740978.5,
+      "ppl_wrong": 7899250.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "subject_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 2,
+      "correct": "Gadis yang membaca majalah di pinggir jalan itu tinggi sekali",
+      "wrong": "Gadis yang itu membaca majalah di pinggir jalan itu tinggi sekali",
+      "ppl_correct": 6057368.5,
+      "ppl_wrong": 4934082.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "subject_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 3,
+      "correct": "Anak perempuan yang menari di pesta itu elok sekali",
+      "wrong": "Anak perempuan yang itu menari di pesta itu elok sekali",
+      "ppl_correct": 9349190.0,
+      "ppl_wrong": 7785496.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "subject_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 4,
+      "correct": "Anak laki-laki yang melompat ke kolam renang itu kurus sekali",
+      "wrong": "Anak laki-laki yang itu melompat ke kolam renang itu kurus sekali",
+      "ppl_correct": 6864428.0,
+      "ppl_wrong": 6418402.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "subject_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 5,
+      "correct": "Pria yang memamerkan mobil mewahnya itu kikir sekali",
+      "wrong": "Pria yang itu memamerkan mobil mewahnya itu kikir sekali",
+      "ppl_correct": 8469601.0,
+      "ppl_wrong": 6783277.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "subject_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 6,
+      "correct": "Perempuan yang menulis puisi ini manis sekali",
+      "wrong": "Perempuan yang itu menulis puisi ini manis sekali",
+      "ppl_correct": 3331243.0,
+      "ppl_wrong": 2958309.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "subject_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 7,
+      "correct": "Wanita yang melarikan diri dari penjara itu seram sekali",
+      "wrong": "Wanita yang itu melarikan diri dari penjara itu seram sekali",
+      "ppl_correct": 4632499.5,
+      "ppl_wrong": 4460281.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "subject_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 8,
+      "correct": "Murid yang memenangkan pertandingan kasti itu sombong sekali",
+      "wrong": "Murid yang itu memenangkan pertandingan kasti itu sombong sekali",
+      "ppl_correct": 4874200.0,
+      "ppl_wrong": 4349390.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "subject_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 9,
+      "correct": "Penyanyi yang membawakan lagu ini gemuk sekali",
+      "wrong": "Penyanyi yang itu membawakan lagu ini gemuk sekali",
+      "ppl_correct": 4851610.0,
+      "ppl_wrong": 5167517.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "subject_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 10,
+      "correct": "Buku yang Tono beli itu mahal sekali",
+      "wrong": "Buku itu yang Tono beli mahal sekali",
+      "ppl_correct": 8781378.0,
+      "ppl_wrong": 9160652.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "object_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 11,
+      "correct": "Jam yang Tono pakai itu mewah sekali",
+      "wrong": "Jam itu yang Tono pakai mewah sekali",
+      "ppl_correct": 5126628.5,
+      "ppl_wrong": 4581420.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "object_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 12,
+      "correct": "Kamar yang Tono sewa itu besar sekali",
+      "wrong": "Kamar itu yang Tono sewa besar sekali",
+      "ppl_correct": 6802673.5,
+      "ppl_wrong": 6534048.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "object_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 13,
+      "correct": "Mobil yang Tono tumpangi itu cepat sekali",
+      "wrong": "Mobil itu yang Tono tumpangi cepat sekali",
+      "ppl_correct": 5887296.0,
+      "ppl_wrong": 6101553.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "object_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 14,
+      "correct": "Lampu yang Tono pasang itu terang sekali",
+      "wrong": "Lampu itu yang Tono pasang terang sekali",
+      "ppl_correct": 12696226.0,
+      "ppl_wrong": 12548884.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "object_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 15,
+      "correct": "Meja yang Tono gunakan itu rapuh sekali",
+      "wrong": "Meja itu yang Tono gunakan rapuh sekali",
+      "ppl_correct": 11770882.0,
+      "ppl_wrong": 10114691.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "object_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 16,
+      "correct": "Parfum yang Tono coba itu wangi sekali",
+      "wrong": "Parfum itu yang Tono coba wangi sekali",
+      "ppl_correct": 2574064.75,
+      "ppl_wrong": 2898244.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "object_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 17,
+      "correct": "Permen yang Tono makan itu manis sekali",
+      "wrong": "Permen itu yang Tono makan manis sekali",
+      "ppl_correct": 4790520.5,
+      "ppl_wrong": 4405850.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "object_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 18,
+      "correct": "Lem yang Tono jual itu lengket sekali",
+      "wrong": "Lem itu yang Tono jual lengket sekali",
+      "ppl_correct": 4732948.5,
+      "ppl_wrong": 4395077.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "object_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 19,
+      "correct": "Lemari yang Tono punya itu kokoh sekali",
+      "wrong": "Lemari itu yang Tono punya kokoh sekali",
+      "ppl_correct": 5259973.0,
+      "ppl_wrong": 4516414.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "object_relatives_and_demonstratives",
+      "subcategory": "none"
+    },
+    {
+      "id": 20,
+      "correct": "Tono menjadi terlalu gemuk karena dia memakan apa?",
+      "wrong": "Apa yang Tono menjadi terlalu gemuk karena dia makan?",
+      "ppl_correct": 6192753.0,
+      "ppl_wrong": 7832779.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_adjunct_islands_and_coordinate_islands",
+      "subcategory": "adjunct_islands"
+    },
+    {
+      "id": 21,
+      "correct": "Tono senang karena dia berhasil menemui siapa?",
+      "wrong": "Siapa yang Tono senang karena dia berhasil temui?",
+      "ppl_correct": 5081676.0,
+      "ppl_wrong": 5190731.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_adjunct_islands_and_coordinate_islands",
+      "subcategory": "adjunct_islands"
+    },
+    {
+      "id": 22,
+      "correct": "Tono menjerit ketika dia menemukan apa di lemarinya?",
+      "wrong": "Apa yang Tono menjerit ketika dia temukan di lemarinya?",
+      "ppl_correct": 4440541.0,
+      "ppl_wrong": 6544550.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_adjunct_islands_and_coordinate_islands",
+      "subcategory": "adjunct_islands"
+    },
+    {
+      "id": 23,
+      "correct": "Tono pulang setelah siapa menelepon dia?",
+      "wrong": "Siapa yang Tono pulang setelah menelepon dia?",
+      "ppl_correct": 5551836.0,
+      "ppl_wrong": 8522770.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_adjunct_islands_and_coordinate_islands",
+      "subcategory": "adjunct_islands"
+    },
+    {
+      "id": 24,
+      "correct": "Tono mengurus setelah dia mulai melakukan apa?",
+      "wrong": "Apa yang Tono mengurus setelah dia mulai lakukan?",
+      "ppl_correct": 7071948.0,
+      "ppl_wrong": 7433089.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_adjunct_islands_and_coordinate_islands",
+      "subcategory": "adjunct_islands"
+    },
+    {
+      "id": 25,
+      "correct": "Tono melihat Tini dan siapa di pasar kemarin?",
+      "wrong": "Siapa yang Tono melihat Tini dan di pasar kemarin?",
+      "ppl_correct": 6021308.0,
+      "ppl_wrong": 7598902.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_adjunct_islands_and_coordinate_islands",
+      "subcategory": "coordinate_islands"
+    },
+    {
+      "id": 26,
+      "correct": "Tono memasak ikan dan apa untuk makan malam hari ini?",
+      "wrong": "Apa yang Tono memasak ikan dan untuk makan malam hari ini?",
+      "ppl_correct": 4966719.5,
+      "ppl_wrong": 5361620.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_adjunct_islands_and_coordinate_islands",
+      "subcategory": "coordinate_islands"
+    },
+    {
+      "id": 27,
+      "correct": "Tono akan mengajak Tini dan siapa ke taman besok?",
+      "wrong": "Siapa yang Tono akan mengajak Tini dan ke taman besok?",
+      "ppl_correct": 5592376.0,
+      "ppl_wrong": 6454003.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_adjunct_islands_and_coordinate_islands",
+      "subcategory": "coordinate_islands"
+    },
+    {
+      "id": 28,
+      "correct": "Guru itu menghukum Tono dan siapa di sekolah minggu kemarin?",
+      "wrong": "Siapa yang guru itu menghukum Tono dan di sekolah minggu kemarin?",
+      "ppl_correct": 6853909.0,
+      "ppl_wrong": 5335509.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_adjunct_islands_and_coordinate_islands",
+      "subcategory": "coordinate_islands"
+    },
+    {
+      "id": 29,
+      "correct": "Tono kehilangan telepon genggamnya dan apa saat konser barusan?",
+      "wrong": "Apa yang Tono kehilangan telepon genggamnya dan saat konser barusan?",
+      "ppl_correct": 5283723.5,
+      "ppl_wrong": 6773212.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_adjunct_islands_and_coordinate_islands",
+      "subcategory": "coordinate_islands"
+    },
+    {
+      "id": 30,
+      "correct": "Siapa yang Tono baca bukunya?",
+      "wrong": "Siapa yang Tono baca buku?",
+      "ppl_correct": 7066359.0,
+      "ppl_wrong": 7555762.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 31,
+      "correct": "Siapa yang Tono beli mobilnya?",
+      "wrong": "Siapa yang Tono beli mobil?",
+      "ppl_correct": 8386245.0,
+      "ppl_wrong": 10192485.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 32,
+      "correct": "Siapa yang Tono hilangkan dompetnya?",
+      "wrong": "Siapa yang Tono hilangkan dompet?",
+      "ppl_correct": 8781353.0,
+      "ppl_wrong": 10520142.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 33,
+      "correct": "Siapa yang Tono temui ibunya?",
+      "wrong": "Siapa yang Tono temui ibu?",
+      "ppl_correct": 11359895.0,
+      "ppl_wrong": 9305923.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 34,
+      "correct": "Siapa yang Tono cuci bajunya?",
+      "wrong": "Siapa yang Tono cuci baju?",
+      "ppl_correct": 12193852.0,
+      "ppl_wrong": 12800661.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 35,
+      "correct": "Siapa yang Tono perbaiki komputernya?",
+      "wrong": "Siapa yang Tono perbaiki komputer?",
+      "ppl_correct": 9156792.0,
+      "ppl_wrong": 8322165.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 36,
+      "correct": "Siapa yang Tono ambil tasnya?",
+      "wrong": "Siapa yang Tono ambil tas?",
+      "ppl_correct": 10294707.0,
+      "ppl_wrong": 10023829.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 37,
+      "correct": "Siapa yang Tono nilai pekerjaan rumahnya?",
+      "wrong": "Siapa yang Tono nilai pekerjaan rumah?",
+      "ppl_correct": 12492525.0,
+      "ppl_wrong": 9126766.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 38,
+      "correct": "Siapa yang Tono pinjam teleponnya?",
+      "wrong": "Siapa yang Tono pinjam telepon?",
+      "ppl_correct": 8114379.0,
+      "ppl_wrong": 10498173.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 39,
+      "correct": "Siapa yang Tono suka nasi gorengnya?",
+      "wrong": "Siapa yang Tono suka nasi goreng?",
+      "ppl_correct": 10075872.0,
+      "ppl_wrong": 9631516.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "wh-movement_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 40,
+      "correct": "Tini yang Tono baca bukunya",
+      "wrong": "Tini yang Tono baca buku",
+      "ppl_correct": 5364366.5,
+      "ppl_wrong": 5525995.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "topicalization_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 41,
+      "correct": "Tini yang Tono beli mobilnya",
+      "wrong": "Tini yang Tono beli mobil",
+      "ppl_correct": 7088484.0,
+      "ppl_wrong": 6668356.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "topicalization_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 42,
+      "correct": "Tini yang Tono hilangkan dompetnya",
+      "wrong": "Tini yang Tono hilangkan dompet",
+      "ppl_correct": 6366741.0,
+      "ppl_wrong": 7369964.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "topicalization_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 43,
+      "correct": "Tini yang Tono temui ibunya",
+      "wrong": "Tini yang Tono temui ibu",
+      "ppl_correct": 7110488.5,
+      "ppl_wrong": 5551095.0,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "topicalization_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 44,
+      "correct": "Tini yang Tono cuci bajunya",
+      "wrong": "Tini yang Tono cuci baju",
+      "ppl_correct": 7510452.0,
+      "ppl_wrong": 7383548.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "topicalization_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 45,
+      "correct": "Tini yang Tono perbaiki komputernya",
+      "wrong": "Tini yang Tono perbaiki komputer",
+      "ppl_correct": 5492778.5,
+      "ppl_wrong": 5994299.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "topicalization_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 46,
+      "correct": "Tini yang Tono ambil tasnya",
+      "wrong": "Tini yang Tono ambil tas",
+      "ppl_correct": 5549893.5,
+      "ppl_wrong": 6294799.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "topicalization_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 47,
+      "correct": "Tini yang Tono nilai pekerjaan rumahnya",
+      "wrong": "Tini yang Tono nilai pekerjaan rumah",
+      "ppl_correct": 8096214.0,
+      "ppl_wrong": 7734174.5,
+      "is_correct": false,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "topicalization_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 48,
+      "correct": "Tini yang Tono pinjam teleponnya",
+      "wrong": "Tini yang Tono pinjam telepon",
+      "ppl_correct": 6321980.0,
+      "ppl_wrong": 7348685.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "topicalization_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 49,
+      "correct": "Tini yang Tono suka nasi gorengnya",
+      "wrong": "Tini yang Tono suka nasi goreng",
+      "ppl_correct": 6092378.0,
+      "ppl_wrong": 6791614.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "topicalization_with_left_branch_condition",
+      "subcategory": "none"
+    },
+    {
+      "id": 50,
+      "correct": "Tono sudah makan, tapi Tini belum",
+      "wrong": "Tono sudah makan, tapi Tini masih",
+      "ppl_correct": 6987384.5,
+      "ppl_wrong": 8064980.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "verb_phrase_ellipsis",
+      "subcategory": "aspect_mismatch"
+    },
+    {
+      "id": 51,
+      "correct": "Tono belum makan, tapi Tini sudah",
+      "wrong": "Tono belum makan, tapi Tini masih",
+      "ppl_correct": 8071929.0,
+      "ppl_wrong": 8523144.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "verb_phrase_ellipsis",
+      "subcategory": "aspect_mismatch"
+    },
+    {
+      "id": 52,
+      "correct": "Tono sudah pergi, tapi Tini belum",
+      "wrong": "Tono sudah pergi, tapi Tini masih",
+      "ppl_correct": 8067442.0,
+      "ppl_wrong": 9205456.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "verb_phrase_ellipsis",
+      "subcategory": "aspect_mismatch"
+    },
+    {
+      "id": 53,
+      "correct": "Tono belum pergi, tapi Tini sudah",
+      "wrong": "Tono belum pergi, tapi Tini masih",
+      "ppl_correct": 9145621.0,
+      "ppl_wrong": 9516618.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "verb_phrase_ellipsis",
+      "subcategory": "aspect_mismatch"
+    },
+    {
+      "id": 54,
+      "correct": "Tono sudah minum obat, tapi Tini belum",
+      "wrong": "Tono sudah minum obat, tapi Tini masih",
+      "ppl_correct": 7759885.5,
+      "ppl_wrong": 8565361.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "verb_phrase_ellipsis",
+      "subcategory": "aspect_mismatch"
+    },
+    {
+      "id": 55,
+      "correct": "Tono sedang makan dan Tini juga masih",
+      "wrong": "Tono masih makan dan Tini juga sedang",
+      "ppl_correct": 5379120.5,
+      "ppl_wrong": 5742844.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "verb_phrase_ellipsis",
+      "subcategory": "word_order"
+    },
+    {
+      "id": 56,
+      "correct": "Tono sedang berenang dan Tini juga masih",
+      "wrong": "Tono masih berenang dan Tini juga sedang",
+      "ppl_correct": 5956518.0,
+      "ppl_wrong": 6483484.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "verb_phrase_ellipsis",
+      "subcategory": "word_order"
+    },
+    {
+      "id": 57,
+      "correct": "Tono sedang belajar dan Tini juga masih",
+      "wrong": "Tono masih belajar dan Tini juga sedang",
+      "ppl_correct": 6381586.0,
+      "ppl_wrong": 6866693.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "verb_phrase_ellipsis",
+      "subcategory": "word_order"
+    },
+    {
+      "id": 58,
+      "correct": "Tono sedang tidur dan Tini juga masih",
+      "wrong": "Tono masih tidur dan Tini juga sedang",
+      "ppl_correct": 5795685.0,
+      "ppl_wrong": 6942397.0,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "verb_phrase_ellipsis",
+      "subcategory": "word_order"
+    },
+    {
+      "id": 59,
+      "correct": "Tono sedang pergi dan Tini juga masih",
+      "wrong": "Tono masih pergi dan Tini juga sedang",
+      "ppl_correct": 5414293.0,
+      "ppl_wrong": 6305614.5,
+      "is_correct": true,
+      "phenomenon": "filler-gap_dependencies",
+      "category": "verb_phrase_ellipsis",
+      "subcategory": "word_order"
+    }
+  ],
+  "accuracy": 0.5833333333333334,
+  "model_name": "babylm_indo_token_shuffle_control_100M_randinit_seed0",
+  "model_path": "/home/s2587034/pretrained_checkpoints/babylm_models/babylm_indo_token_shuffle_control_100M_randinit_seed0/runs/babylm_indo_token_shuffle_control_100M_randinit_seed0",
+  "evaluation_time": "2025-07-14T14:01:55.376273"
+}

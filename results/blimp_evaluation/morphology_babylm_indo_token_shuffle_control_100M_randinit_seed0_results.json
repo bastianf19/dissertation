@@ -1,0 +1,621 @@
+{
+  "total": 52,
+  "correct": 27,
+  "by_category": {
+    "benefactive_constructions_without_untuk": {
+      "total": 10,
+      "correct": 3,
+      "accuracy": 0.3
+    },
+    "dative_constructions_without_kepada": {
+      "total": 10,
+      "correct": 4,
+      "accuracy": 0.4
+    },
+    "men-_with_control_verbs_mau_and_coba": {
+      "total": 10,
+      "correct": 6,
+      "accuracy": 0.6
+    },
+    "men-_with_dirinya_or_dirimu_subjects": {
+      "total": 10,
+      "correct": 7,
+      "accuracy": 0.7
+    },
+    "men-_with_clefted_sentences": {
+      "total": 10,
+      "correct": 6,
+      "accuracy": 0.6
+    },
+    "men-_with_objects_subject_to_left_branch_condition": {
+      "total": 2,
+      "correct": 1,
+      "accuracy": 0.5
+    }
+  },
+  "by_phenomenon": {
+    "morphology": {
+      "total": 52,
+      "correct": 27,
+      "accuracy": 0.5192307692307693
+    }
+  },
+  "examples": [
+    {
+      "id": 0,
+      "correct": "Tono membuatkan Tini kue lupis manis",
+      "wrong": "Tono membuatkan kue lupis manis Tini",
+      "ppl_correct": 8750180.0,
+      "ppl_wrong": 8143069.5,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "benefactive_constructions_without_untuk",
+      "subcategory": "none"
+    },
+    {
+      "id": 1,
+      "correct": "Tono memanggangkan Tini kue bolu pandan",
+      "wrong": "Tono memanggangkan kue bolu pandan Tini",
+      "ppl_correct": 6253996.0,
+      "ppl_wrong": 5927735.5,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "benefactive_constructions_without_untuk",
+      "subcategory": "none"
+    },
+    {
+      "id": 2,
+      "correct": "Tono memasakkan Tini rendang daging sapi pedas",
+      "wrong": "Tono memasakkan rendang daging sapi pedas Tini",
+      "ppl_correct": 7473056.5,
+      "ppl_wrong": 7272669.5,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "benefactive_constructions_without_untuk",
+      "subcategory": "none"
+    },
+    {
+      "id": 3,
+      "correct": "Tono menuliskan Tini puisi cinta",
+      "wrong": "Tono menuliskan puisi cinta Tini",
+      "ppl_correct": 9794729.0,
+      "ppl_wrong": 9294766.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "benefactive_constructions_without_untuk",
+      "subcategory": "none"
+    },
+    {
+      "id": 4,
+      "correct": "Tono melukiskan Tini gambar pemandangan gunung Semeru",
+      "wrong": "Tono melukiskan gambar pemandangan gunung Semeru Tini",
+      "ppl_correct": 7576702.0,
+      "ppl_wrong": 6786357.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "benefactive_constructions_without_untuk",
+      "subcategory": "none"
+    },
+    {
+      "id": 5,
+      "correct": "Tono membelikan Tini beberapa novel remaja",
+      "wrong": "Tono membeli beberapa novel remaja Tini",
+      "ppl_correct": 9201734.0,
+      "ppl_wrong": 5588868.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "benefactive_constructions_without_untuk",
+      "subcategory": "none"
+    },
+    {
+      "id": 6,
+      "correct": "Tono menyanyikan Tini beberapa lagu dangdut koplo",
+      "wrong": "Tono menyanyikan beberapa lagu dangdut koplo Tini",
+      "ppl_correct": 7285310.5,
+      "ppl_wrong": 6705893.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "benefactive_constructions_without_untuk",
+      "subcategory": "none"
+    },
+    {
+      "id": 7,
+      "correct": "Tono menuangkan Tini air putih dingin",
+      "wrong": "Tono menuangkan air putih dingin Tini",
+      "ppl_correct": 6362243.5,
+      "ppl_wrong": 7380444.5,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "benefactive_constructions_without_untuk",
+      "subcategory": "none"
+    },
+    {
+      "id": 8,
+      "correct": "Tono mencarikan Tini lowongan pekerjaan baru",
+      "wrong": "Tono mencarikan lowongan pekerjaan baru Tini",
+      "ppl_correct": 5082107.0,
+      "ppl_wrong": 5710981.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "benefactive_constructions_without_untuk",
+      "subcategory": "none"
+    },
+    {
+      "id": 9,
+      "correct": "Tono meniupkan Tini beberapa balon kuning",
+      "wrong": "Tono meniupkan beberapa balon kuning Tini",
+      "ppl_correct": 7546278.0,
+      "ppl_wrong": 8128367.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "benefactive_constructions_without_untuk",
+      "subcategory": "none"
+    },
+    {
+      "id": 10,
+      "correct": "Tono memberikan Tini uang",
+      "wrong": "Tono memberikan uang Tini",
+      "ppl_correct": 9436042.0,
+      "ppl_wrong": 8638000.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "dative_constructions_without_kepada",
+      "subcategory": "none"
+    },
+    {
+      "id": 11,
+      "correct": "Tono menunjukkan Tini proses pembuatan keju lokal",
+      "wrong": "Tono menunjukkan proses pembuatan keju lokal Tini",
+      "ppl_correct": 8095179.0,
+      "ppl_wrong": 9830476.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "dative_constructions_without_kepada",
+      "subcategory": "none"
+    },
+    {
+      "id": 12,
+      "correct": "Tono mengirimkan Tini banyak surat cinta",
+      "wrong": "Tono mengirimkan banyak surat cinta Tini",
+      "ppl_correct": 5657984.5,
+      "ppl_wrong": 5298346.5,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "dative_constructions_without_kepada",
+      "subcategory": "none"
+    },
+    {
+      "id": 13,
+      "correct": "Tono memberitahukan Tini berita bohong",
+      "wrong": "Tono memberitahukan berita bohong Tini",
+      "ppl_correct": 7414236.0,
+      "ppl_wrong": 7260577.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "dative_constructions_without_kepada",
+      "subcategory": "none"
+    },
+    {
+      "id": 14,
+      "correct": "Tono menyajikan Tini hidangan mewah",
+      "wrong": "Tono menyajikan hidangan mewah Tini",
+      "ppl_correct": 13123780.0,
+      "ppl_wrong": 14067253.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "dative_constructions_without_kepada",
+      "subcategory": "none"
+    },
+    {
+      "id": 15,
+      "correct": "Tono membacakan Tini dongeng cerita rakyat",
+      "wrong": "Tono membacakan dongeng cerita rakyat Tini",
+      "ppl_correct": 7017636.5,
+      "ppl_wrong": 5801961.5,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "dative_constructions_without_kepada",
+      "subcategory": "none"
+    },
+    {
+      "id": 16,
+      "correct": "Tono mempercayakan Tini tugas-tugas penting",
+      "wrong": "Tono mempercayakan tugas-tugas penting Tini",
+      "ppl_correct": 7041126.0,
+      "ppl_wrong": 7976168.5,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "dative_constructions_without_kepada",
+      "subcategory": "none"
+    },
+    {
+      "id": 17,
+      "correct": "Tono menanyakan Tini perkembangan dunia politik di Indonesia",
+      "wrong": "Tono menanyakan perkembangan dunia politik di Indonesia Tini",
+      "ppl_correct": 8331185.5,
+      "ppl_wrong": 7899424.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "dative_constructions_without_kepada",
+      "subcategory": "none"
+    },
+    {
+      "id": 18,
+      "correct": "Tono mengirimkan Tini beberapa surat ancaman",
+      "wrong": "Tono mengirimkan beberapa surat ancaman Tini",
+      "ppl_correct": 8378203.0,
+      "ppl_wrong": 8383734.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "dative_constructions_without_kepada",
+      "subcategory": "none"
+    },
+    {
+      "id": 19,
+      "correct": "Tono meminjamkan Tini sejumlah uang",
+      "wrong": "Tono meminjamkan sejumlah uang Tini",
+      "ppl_correct": 10912521.0,
+      "ppl_wrong": 10470417.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "dative_constructions_without_kepada",
+      "subcategory": "none"
+    },
+    {
+      "id": 20,
+      "correct": "Mobil itu Tono coba jual ",
+      "wrong": "Mobil itu Tono coba menjual",
+      "ppl_correct": 9700116.0,
+      "ppl_wrong": 9529515.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_control_verbs_mau_and_coba",
+      "subcategory": "coba"
+    },
+    {
+      "id": 21,
+      "correct": "Rumah itu Tono coba beli",
+      "wrong": "Rumah itu Tono coba membeli",
+      "ppl_correct": 10295454.0,
+      "ppl_wrong": 11155505.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_control_verbs_mau_and_coba",
+      "subcategory": "coba"
+    },
+    {
+      "id": 22,
+      "correct": "Buah itu Tono coba potong",
+      "wrong": "Buah itu Tono coba memotong",
+      "ppl_correct": 14292404.0,
+      "ppl_wrong": 15651901.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_control_verbs_mau_and_coba",
+      "subcategory": "coba"
+    },
+    {
+      "id": 23,
+      "correct": "Uang itu Tono coba tabung",
+      "wrong": "Uang itu Tono coba menabung",
+      "ppl_correct": 6226395.5,
+      "ppl_wrong": 5567418.5,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_control_verbs_mau_and_coba",
+      "subcategory": "coba"
+    },
+    {
+      "id": 24,
+      "correct": "Air itu Tono coba tuang",
+      "wrong": "Air itu Tono coba menuang",
+      "ppl_correct": 8802936.0,
+      "ppl_wrong": 11315176.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_control_verbs_mau_and_coba",
+      "subcategory": "coba"
+    },
+    {
+      "id": 25,
+      "correct": "Mobil itu Tono mau jual ",
+      "wrong": "Mobil itu Tono mau menjual",
+      "ppl_correct": 7117239.0,
+      "ppl_wrong": 6543595.5,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_control_verbs_mau_and_coba",
+      "subcategory": "mau"
+    },
+    {
+      "id": 26,
+      "correct": "Rumah itu Tono mau beli",
+      "wrong": "Rumah itu Tono mau membeli",
+      "ppl_correct": 8760501.0,
+      "ppl_wrong": 10369811.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_control_verbs_mau_and_coba",
+      "subcategory": "mau"
+    },
+    {
+      "id": 27,
+      "correct": "Buah itu Tono mau potong",
+      "wrong": "Buah itu Tono mau memotong",
+      "ppl_correct": 11689732.0,
+      "ppl_wrong": 11710329.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_control_verbs_mau_and_coba",
+      "subcategory": "mau"
+    },
+    {
+      "id": 28,
+      "correct": "Uang itu Tono mau tabung",
+      "wrong": "Uang itu Tono mau menabung",
+      "ppl_correct": 4368109.0,
+      "ppl_wrong": 4011308.5,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_control_verbs_mau_and_coba",
+      "subcategory": "mau"
+    },
+    {
+      "id": 29,
+      "correct": "Air itu Tono mau tuang",
+      "wrong": "Air itu Tono mau menuang",
+      "ppl_correct": 6162659.5,
+      "ppl_wrong": 7805263.5,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_control_verbs_mau_and_coba",
+      "subcategory": "mau"
+    },
+    {
+      "id": 30,
+      "correct": "Dirimu kamu ajukan sebagai calon ketua kelas",
+      "wrong": "Dirimu kamu mengajukan sebagai calon ketua kelas",
+      "ppl_correct": 3014508.25,
+      "ppl_wrong": 3137002.75,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_dirinya_or_dirimu_subjects",
+      "subcategory": "dirimu"
+    },
+    {
+      "id": 31,
+      "correct": "Dirimu kamu ajarkan untuk berjuang",
+      "wrong": "Dirimu kamu mengajarkan untuk berjuang",
+      "ppl_correct": 3410706.25,
+      "ppl_wrong": 4217641.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_dirinya_or_dirimu_subjects",
+      "subcategory": "dirimu"
+    },
+    {
+      "id": 32,
+      "correct": "Dirimu kamu perbaiki",
+      "wrong": "Dirimu kamu memperbaiki",
+      "ppl_correct": 3462451.75,
+      "ppl_wrong": 5542969.5,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_dirinya_or_dirimu_subjects",
+      "subcategory": "dirimu"
+    },
+    {
+      "id": 33,
+      "correct": "Dirimu kamu ubah",
+      "wrong": "Dirimu kamu mengubah",
+      "ppl_correct": 3202876.5,
+      "ppl_wrong": 3328115.25,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_dirinya_or_dirimu_subjects",
+      "subcategory": "dirimu"
+    },
+    {
+      "id": 34,
+      "correct": "Dirimu kamu serahkan ke polisi",
+      "wrong": "Dirimu kamu menyerahkan ke polisi",
+      "ppl_correct": 2558075.0,
+      "ppl_wrong": 2506499.75,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_dirinya_or_dirimu_subjects",
+      "subcategory": "dirimu"
+    },
+    {
+      "id": 35,
+      "correct": "Dirinya dia rawat dengan baik",
+      "wrong": "Dirinya dia merawat dengan baik",
+      "ppl_correct": 9859187.0,
+      "ppl_wrong": 9617087.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_dirinya_or_dirimu_subjects",
+      "subcategory": "dirinya"
+    },
+    {
+      "id": 36,
+      "correct": "Dirinya dia ampuni",
+      "wrong": "Dirinya dia mengampuni",
+      "ppl_correct": 12633540.0,
+      "ppl_wrong": 8089391.5,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_dirinya_or_dirimu_subjects",
+      "subcategory": "dirinya"
+    },
+    {
+      "id": 37,
+      "correct": "Dirinya dia tutupi dengan selimut",
+      "wrong": "Dirinya dia menutupi dengan selimut",
+      "ppl_correct": 7575272.0,
+      "ppl_wrong": 10055080.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_dirinya_or_dirimu_subjects",
+      "subcategory": "dirinya"
+    },
+    {
+      "id": 38,
+      "correct": "Dirinya dia kembangkan",
+      "wrong": "Dirinya dia mengembangkan",
+      "ppl_correct": 10583176.0,
+      "ppl_wrong": 11953442.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_dirinya_or_dirimu_subjects",
+      "subcategory": "dirinya"
+    },
+    {
+      "id": 39,
+      "correct": "Dirinya dia salahkan",
+      "wrong": "Dirinya dia menyalahkan",
+      "ppl_correct": 9270792.0,
+      "ppl_wrong": 10279795.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_dirinya_or_dirimu_subjects",
+      "subcategory": "dirinya"
+    },
+    {
+      "id": 40,
+      "correct": "Pintu itulah yang Tono buka",
+      "wrong": "Pintu itulah yang Tono membuka",
+      "ppl_correct": 5349209.5,
+      "ppl_wrong": 5599126.5,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_clefted_sentences",
+      "subcategory": "none"
+    },
+    {
+      "id": 41,
+      "correct": "Meja itulah yang Tono pakai",
+      "wrong": "Meja itulah yang Tono memakai",
+      "ppl_correct": 7808889.5,
+      "ppl_wrong": 7771801.5,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_clefted_sentences",
+      "subcategory": "none"
+    },
+    {
+      "id": 42,
+      "correct": "Jendela itulah yang Tono rusak",
+      "wrong": "Jendela itulah yang Tono merusak",
+      "ppl_correct": 6196332.5,
+      "ppl_wrong": 5245096.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_clefted_sentences",
+      "subcategory": "none"
+    },
+    {
+      "id": 43,
+      "correct": "Kursi itulah yang Tono tarik",
+      "wrong": "Kursi itulah yang Tono menarik",
+      "ppl_correct": 6236771.5,
+      "ppl_wrong": 6404430.5,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_clefted_sentences",
+      "subcategory": "none"
+    },
+    {
+      "id": 44,
+      "correct": "Lemari itulah yang Tono beli",
+      "wrong": "Lemari itulah yang Tono membeli",
+      "ppl_correct": 3863104.5,
+      "ppl_wrong": 3936893.75,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_clefted_sentences",
+      "subcategory": "none"
+    },
+    {
+      "id": 45,
+      "correct": "Nasi goreng itulah yang Tono makan",
+      "wrong": "Nasi goreng itulah yang Tono memakan",
+      "ppl_correct": 3157078.0,
+      "ppl_wrong": 4191956.75,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_clefted_sentences",
+      "subcategory": "none"
+    },
+    {
+      "id": 46,
+      "correct": "Obat sakit perut itulah yang Tono minum",
+      "wrong": "Obat sakit perut itulah yang Tono meminum",
+      "ppl_correct": 7430063.5,
+      "ppl_wrong": 6993911.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_clefted_sentences",
+      "subcategory": "none"
+    },
+    {
+      "id": 47,
+      "correct": "Mata pelajaran itulah yang Tono ambil",
+      "wrong": "Mata pelajaran itulah yang Tono mengambil",
+      "ppl_correct": 4265444.5,
+      "ppl_wrong": 5412501.5,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_clefted_sentences",
+      "subcategory": "none"
+    },
+    {
+      "id": 48,
+      "correct": "Pertanyaan itulah yang Tono jawab",
+      "wrong": "Pertanyaan itulah yang Tono menjawab",
+      "ppl_correct": 6287143.5,
+      "ppl_wrong": 5689660.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_clefted_sentences",
+      "subcategory": "none"
+    },
+    {
+      "id": 49,
+      "correct": "Bola itulah yang Tono tendang",
+      "wrong": "Bola itulah yang Tono menendang",
+      "ppl_correct": 3823512.75,
+      "ppl_wrong": 4746704.0,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_clefted_sentences",
+      "subcategory": "none"
+    },
+    {
+      "id": 50,
+      "correct": "Siapa yang Tono baca bukunya?",
+      "wrong": "Siapa yang Tono membaca bukunya?",
+      "ppl_correct": 7066359.0,
+      "ppl_wrong": 7406073.5,
+      "is_correct": true,
+      "phenomenon": "morphology",
+      "category": "men-_with_objects_subject_to_left_branch_condition",
+      "subcategory": "wh-movement_from_island"
+    },
+    {
+      "id": 51,
+      "correct": "Siapa yang Tono cari mobilnya?",
+      "wrong": "Siapa yang Tono mencari mobilnya?",
+      "ppl_correct": 9528915.0,
+      "ppl_wrong": 8329239.0,
+      "is_correct": false,
+      "phenomenon": "morphology",
+      "category": "men-_with_objects_subject_to_left_branch_condition",
+      "subcategory": "wh-movement_from_island"
+    }
+  ],
+  "accuracy": 0.5192307692307693,
+  "model_name": "babylm_indo_token_shuffle_control_100M_randinit_seed0",
+  "model_path": "/home/s2587034/pretrained_checkpoints/babylm_models/babylm_indo_token_shuffle_control_100M_randinit_seed0/runs/babylm_indo_token_shuffle_control_100M_randinit_seed0",
+  "evaluation_time": "2025-07-14T14:01:57.026418"
+}

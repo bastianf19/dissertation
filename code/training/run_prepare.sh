@@ -51,15 +51,15 @@ run_training() {
 # Format: "perturbation dataset seed paren_model"
 declare -a training_configs=(
     # "shuffle_control 100M 0 randinit"\
-    # "shuffle_nondeterministic 100M 0 randinit"
+    "shuffle_nondeterministic 100M 0 randinit"
     # "shuffle_deterministic21 100M 0 randinit"
     # "shuffle_local3 100M 0 randinit"
     # "shuffle_local5 100M 0 randinit"
     # "shuffle_local10 100M 0 randinit"
     # "shuffle_even_odd 100M 0 randinit"
-    "reverse_control 100M 0 randinit"
-    "reverse_partial 100M 0 randinit"
-    "reverse_full 100M 0 randinit"
+    # "reverse_control 100M 0 randinit"
+    # "reverse_partial 100M 0 randinit"
+    # "reverse_full 100M 0 randinit"
 )
 
 # Run all training configurations

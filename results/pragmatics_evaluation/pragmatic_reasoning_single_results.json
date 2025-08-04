@@ -1,0 +1,814 @@
+{
+  "total": 100,
+  "correct": 0,
+  "by_phenomenon": {
+    "unknown": {
+      "total": 100,
+      "correct": 0,
+      "accuracy": 0.0
+    }
+  },
+  "examples": [
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(degree_ordering)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(negation)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(comparative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(comparative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(comparative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(comparative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(comparative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(comparative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(comparative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(comparative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(comparative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(comparative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(superlative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(superlative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(superlative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(superlative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(superlative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(superlative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(superlative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(superlative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(superlative)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(superlative)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "True",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "False",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "adjective_scale_(booster)"
+    },
+    {
+      "text": " ",
+      "label": "Yes",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "No",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "Yes",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "No",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "Yes",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "No",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "Yes",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "No",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "Yes",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "No",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "Yes",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "No",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "Yes",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "No",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "Yes",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "No",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "Yes",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "No",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "Yes",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    },
+    {
+      "text": " ",
+      "label": "No",
+      "prediction": false,
+      "perplexity": NaN,
+      "phenomenon": "unknown",
+      "category": "change-of-state_verbs_(non-culminating)"
+    }
+  ],
+  "accuracy": 0.0
+}

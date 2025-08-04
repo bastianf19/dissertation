@@ -115,15 +115,23 @@ if __name__ == "__main__":
                         help='Parenthesis model')
     parser.add_argument('-np', '--no_pos_encodings', action='store_true',
                         help="Train GPT-2 with no positional encodings")
-
+    # parser.add_argument('model_path',
+    #                     type='str',
+    #                     help='Path to model')
+    
     # Get args
     args = parser.parse_args()
     no_pos_encodings_underscore = "_no_positional_encodings" if args.no_pos_encodings else ""
 
     # Get path to model
     model = f"babylm_{args.perturbation_type}_{args.train_set}_{args.paren_model}{no_pos_encodings_underscore}_seed{args.random_seed}"
-    model_path = f"{CHECKPOINT_READ_PATH}/babylm_{args.perturbation_type}_{args.train_set}_{args.paren_model}{no_pos_encodings_underscore}/{model}/runs/{model}/checkpoint-"
-
+    # if args.model_path:
+    #     model_path = args.model_path
+    # else:
+    # model_path = f"{CHECKPOINT_READ_PATH}/babylm_{args.perturbation_type}_{args.train_set}_{args.paren_model}{no_pos_encodings_underscore}/{model}/runs/{model}/checkpoint-"
+    # /home/s2587034/pretrained_checkpoints/babylm_models_en/babylm_reverse_control_100M_randinit/runs/babylm_reverse_control_100M_randinit_seed0
+    # /home/s2587034/pretrained_checkpoints/babylm_models_en/babylm_reverse_control_100M_randinit/babylm_reverse_control_100M_randinit_seed0/runs/babylm_reverse_control_100M_randinit_seed0/
+    model_path = f"{CHECKPOINT_READ_PATH}/babylm_{args.perturbation_type}_{args.train_set}_{args.paren_model}{no_pos_encodings_underscore}/runs/{model}/checkpoint-"
     # Get perturbed test files
     test_files = sorted(glob(
         f"{BABYLM_DATA_PATH}/babylm_data_perturbed/babylm_{args.test_perturbation_type}/babylm_test_affected/*"))
@@ -166,7 +174,7 @@ if __name__ == "__main__":
         "Sentences": test_sents
     })
 
-    BATCH_SIZE = 4
+    BATCH_SIZE = 6
     device = "cuda"
     for ckpt in CHECKPOINTS:
         try:
@@ -209,6 +217,9 @@ if __name__ == "__main__":
             break
 
     # Write results to CSV
+    # if args.model_path:
+    #     directory = f"perplexity_results/en_{args.perturbation_type}_{args.train_set}{no_pos_encodings_underscore}"
+    # else:
     directory = f"perplexity_results/{args.perturbation_type}_{args.train_set}{no_pos_encodings_underscore}"
     if not os.path.exists(directory):
         os.makedirs(directory)

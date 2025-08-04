@@ -1,0 +1,12 @@
+{
+  "pragmatic_reasoning_pair.jsonl": {
+    "accuracy": 0.6904761904761905,
+    "total_examples": 84,
+    "correct_predictions": 58
+  },
+  "pragmatic_reasoning_single.jsonl": {
+    "accuracy": 0.0,
+    "total_examples": 100,
+    "correct_predictions": 0
+  }
+}

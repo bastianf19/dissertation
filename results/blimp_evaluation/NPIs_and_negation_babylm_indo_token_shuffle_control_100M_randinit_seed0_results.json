@@ -1,0 +1,11 @@
+{
+  "total": 0,
+  "correct": 0,
+  "by_category": {},
+  "by_phenomenon": {},
+  "examples": [],
+  "accuracy": 0.0,
+  "model_name": "babylm_indo_token_shuffle_control_100M_randinit_seed0",
+  "model_path": "/home/s2587034/pretrained_checkpoints/babylm_models/babylm_indo_token_shuffle_control_100M_randinit_seed0/runs/babylm_indo_token_shuffle_control_100M_randinit_seed0",
+  "evaluation_time": "2025-07-14T14:01:57.047101"
+}

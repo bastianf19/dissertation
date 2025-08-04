@@ -1,0 +1,249 @@
+{
+  "total": 20,
+  "correct": 16,
+  "by_category": {
+    "NPI_licensing_in-situ": {
+      "total": 10,
+      "correct": 7,
+      "accuracy": 0.7
+    },
+    "NPI_licensing_with_movement": {
+      "total": 10,
+      "correct": 9,
+      "accuracy": 0.9
+    }
+  },
+  "by_phenomenon": {
+    "NPIs_and_negation": {
+      "total": 20,
+      "correct": 16,
+      "accuracy": 0.8
+    }
+  },
+  "examples": [
+    {
+      "id": 0,
+      "correct": "Tono tidak tahu apa-apa",
+      "wrong": "Tono tahu apa-apa",
+      "ppl_correct": 423.4028625488281,
+      "ppl_wrong": 920.7127685546875,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_in-situ",
+      "subcategory": "none"
+    },
+    {
+      "id": 1,
+      "correct": "Tono tidak melihat siapa-siapa",
+      "wrong": "Tono melihat siapa-siapa",
+      "ppl_correct": 1666.8902587890625,
+      "ppl_wrong": 3374.854248046875,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_in-situ",
+      "subcategory": "none"
+    },
+    {
+      "id": 2,
+      "correct": "Tono tidak pergi kemana-mana",
+      "wrong": "Tono pergi kemana-mana",
+      "ppl_correct": 1064.4671630859375,
+      "ppl_wrong": 1110.0045166015625,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_in-situ",
+      "subcategory": "none"
+    },
+    {
+      "id": 3,
+      "correct": "Tono tidak memakan apa-apa",
+      "wrong": "Tono memakan apa-apa",
+      "ppl_correct": 1240.8795166015625,
+      "ppl_wrong": 2306.34033203125,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_in-situ",
+      "subcategory": "none"
+    },
+    {
+      "id": 4,
+      "correct": "Tono tidak menyukai siapa-siapa",
+      "wrong": "Tono menyukai siapa-siapa",
+      "ppl_correct": 1910.5841064453125,
+      "ppl_wrong": 6726.353515625,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_in-situ",
+      "subcategory": "none"
+    },
+    {
+      "id": 5,
+      "correct": "Tono tidak kecewa kepada siapa-siapa",
+      "wrong": "Tono kecewa kepada siapa-siapa",
+      "ppl_correct": 4164.1982421875,
+      "ppl_wrong": 4085.0927734375,
+      "is_correct": false,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_in-situ",
+      "subcategory": "none"
+    },
+    {
+      "id": 6,
+      "correct": "Tono tidak kesal terhadap siapa-siapa",
+      "wrong": "Tono kesal terhadap siapa-siapa",
+      "ppl_correct": 8206.2822265625,
+      "ppl_wrong": 7552.42236328125,
+      "is_correct": false,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_in-situ",
+      "subcategory": "none"
+    },
+    {
+      "id": 7,
+      "correct": "Tono tidak sakit karena apa-apa",
+      "wrong": "Tono sakit karena apa-apa",
+      "ppl_correct": 1013.0806274414062,
+      "ppl_wrong": 1937.08154296875,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_in-situ",
+      "subcategory": "none"
+    },
+    {
+      "id": 8,
+      "correct": "Tono tidak marah kepada siapa-siapa",
+      "wrong": "Tono marah kepada siapa-siapa",
+      "ppl_correct": 2262.0810546875,
+      "ppl_wrong": 2122.804443359375,
+      "is_correct": false,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_in-situ",
+      "subcategory": "none"
+    },
+    {
+      "id": 9,
+      "correct": "Tono tidak sedih karena apa-apa",
+      "wrong": "Tono sedih karena apa-apa",
+      "ppl_correct": 1297.073974609375,
+      "ppl_wrong": 1628.5748291015625,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_in-situ",
+      "subcategory": "none"
+    },
+    {
+      "id": 10,
+      "correct": "Tono tidak tahu apa-apa",
+      "wrong": "Apa-apa yang Tono tidak tahu",
+      "ppl_correct": 423.4028625488281,
+      "ppl_wrong": 2053.04443359375,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_with_movement",
+      "subcategory": "none"
+    },
+    {
+      "id": 11,
+      "correct": "Tono tidak melihat siapa-siapa",
+      "wrong": "Siapa-siapa yang Tono tidak lihat",
+      "ppl_correct": 1666.8902587890625,
+      "ppl_wrong": 10025.0283203125,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_with_movement",
+      "subcategory": "none"
+    },
+    {
+      "id": 12,
+      "correct": "Tono tidak pergi kemana-mana",
+      "wrong": "Kemana-mana yang Tono tidak pergi",
+      "ppl_correct": 1064.4671630859375,
+      "ppl_wrong": 4199.32470703125,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_with_movement",
+      "subcategory": "none"
+    },
+    {
+      "id": 13,
+      "correct": "Tono tidak memakan apa-apa",
+      "wrong": "Apa-apa yang Tono tidak makan",
+      "ppl_correct": 1240.8795166015625,
+      "ppl_wrong": 2708.451416015625,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_with_movement",
+      "subcategory": "none"
+    },
+    {
+      "id": 14,
+      "correct": "Tono tidak menyukai siapa-siapa",
+      "wrong": "Siapa-siapa yang Tono tidak suka",
+      "ppl_correct": 1910.5841064453125,
+      "ppl_wrong": 9022.7451171875,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_with_movement",
+      "subcategory": "none"
+    },
+    {
+      "id": 15,
+      "correct": "Tono tidak kecewa kepada siapa-siapa",
+      "wrong": "Kepada siapa-siapa Tono tidak kecewa",
+      "ppl_correct": 4164.1982421875,
+      "ppl_wrong": 5814.35498046875,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_with_movement",
+      "subcategory": "none"
+    },
+    {
+      "id": 16,
+      "correct": "Tono tidak kesal terhadap siapa-siapa",
+      "wrong": "Terhadap siapa-siapa Tono tidak kesal",
+      "ppl_correct": 8206.2822265625,
+      "ppl_wrong": 8081.06689453125,
+      "is_correct": false,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_with_movement",
+      "subcategory": "none"
+    },
+    {
+      "id": 17,
+      "correct": "Tono tidak sakit karena apa-apa",
+      "wrong": "Karena apa-apa Tono tidak sakit",
+      "ppl_correct": 1013.0806274414062,
+      "ppl_wrong": 3105.668212890625,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_with_movement",
+      "subcategory": "none"
+    },
+    {
+      "id": 18,
+      "correct": "Tono tidak marah kepada siapa-siapa",
+      "wrong": "Kepada siapa-siapa Tono tidak marah",
+      "ppl_correct": 2262.0810546875,
+      "ppl_wrong": 3906.660400390625,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_with_movement",
+      "subcategory": "none"
+    },
+    {
+      "id": 19,
+      "correct": "Tono tidak sedih karena apa-apa",
+      "wrong": "Karena apa-apa Tono tidak sedih",
+      "ppl_correct": 1297.073974609375,
+      "ppl_wrong": 2944.483154296875,
+      "is_correct": true,
+      "phenomenon": "NPIs_and_negation",
+      "category": "NPI_licensing_with_movement",
+      "subcategory": "none"
+    }
+  ],
+  "accuracy": 0.8,
+  "model_name": "babylm_shuffle_local5_100M_randinit_seed0",
+  "model_path": "/home/s2587034/pretrained_checkpoints/babylm_models/babylm_shuffle_local5_100M_randinit/babylm_shuffle_local5_100M_randinit_seed0/runs/babylm_shuffle_local5_100M_randinit_seed0",
+  "evaluation_time": "2025-07-14T17:24:37.732621"
+}

@@ -1,0 +1,11 @@
+Original Data Statistics:
+Total valid sentences: 10175732
+Mean length: 9.63 words
+Median length: 6.0 words
+Standard deviation: 15.75 words
+
+Translated Data Statistics:
+Total valid sentences: 9302989
+Mean length: 7.88 words
+Median length: 5 words
+Standard deviation: 19.29 words

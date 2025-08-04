@@ -1,0 +1,31 @@
+{
+  "model": "babylm_indo_token_shuffle_control_100M_randinit_seed0",
+  "model_path": "/home/s2587034/pretrained_checkpoints/babylm_models/babylm_indo_token_shuffle_control_100M_randinit_seed0/runs/babylm_indo_token_shuffle_control_100M_randinit_seed0",
+  "evaluation_time": "20250714_140045",
+  "results": {
+    "argument_structure.jsonl": {
+      "model": "babylm_indo_token_shuffle_control_100M_randinit_seed0",
+      "accuracy": 0.5125,
+      "total_examples": 160,
+      "correct_predictions": 82
+    },
+    "filler-gap_dependencies.jsonl": {
+      "model": "babylm_indo_token_shuffle_control_100M_randinit_seed0",
+      "accuracy": 0.5833333333333334,
+      "total_examples": 60,
+      "correct_predictions": 35
+    },
+    "morphology.jsonl": {
+      "model": "babylm_indo_token_shuffle_control_100M_randinit_seed0",
+      "accuracy": 0.5192307692307693,
+      "total_examples": 52,
+      "correct_predictions": 27
+    },
+    "NPIs_and_negation.jsonl": {
+      "model": "babylm_indo_token_shuffle_control_100M_randinit_seed0",
+      "accuracy": 0.0,
+      "total_examples": 0,
+      "correct_predictions": 0
+    }
+  }
+}

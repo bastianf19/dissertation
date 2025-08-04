@@ -1,0 +1,31 @@
+{
+  "model": "babylm_reverse_control_100M_randinit_seed0",
+  "model_path": "/home/s2587034/pretrained_checkpoints/babylm_models/babylm_reverse_control_100M_randinit/babylm_reverse_control_100M_randinit_seed0/runs/babylm_reverse_control_100M_randinit_seed0",
+  "evaluation_time": "20250714_173918",
+  "results": {
+    "argument_structure.jsonl": {
+      "model": "babylm_reverse_control_100M_randinit_seed0",
+      "accuracy": 0.5625,
+      "total_examples": 160,
+      "correct_predictions": 90
+    },
+    "filler-gap_dependencies.jsonl": {
+      "model": "babylm_reverse_control_100M_randinit_seed0",
+      "accuracy": 0.5166666666666667,
+      "total_examples": 60,
+      "correct_predictions": 31
+    },
+    "morphology.jsonl": {
+      "model": "babylm_reverse_control_100M_randinit_seed0",
+      "accuracy": 0.55,
+      "total_examples": 140,
+      "correct_predictions": 77
+    },
+    "NPIs_and_negation.jsonl": {
+      "model": "babylm_reverse_control_100M_randinit_seed0",
+      "accuracy": 0.9,
+      "total_examples": 20,
+      "correct_predictions": 18
+    }
+  }
+}

@@ -1,0 +1,691 @@
+{
+  "total": 84,
+  "correct": 58,
+  "by_phenomenon": {
+    "scalar_implicatures": {
+      "total": 24,
+      "correct": 23,
+      "accuracy": 0.9583333333333334
+    },
+    "presuppositions": {
+      "total": 60,
+      "correct": 35,
+      "accuracy": 0.5833333333333334
+    }
+  },
+  "examples": [
+    {
+      "text": "Tono membeli beberapa panci di toko Tini masih bisa membeli panci di toko",
+      "label": true,
+      "prediction": true,
+      "perplexity": 401.4227600097656,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Tono membeli beberapa panci di toko Tini tidak akan bisa membeli panci di toko lagi",
+      "label": false,
+      "prediction": false,
+      "perplexity": 307.2616882324219,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Tono membeli semua panci di toko Tini tidak akan bisa membeli panci di toko lagi",
+      "label": true,
+      "prediction": true,
+      "perplexity": 269.8200988769531,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Tono membeli semua panci di toko Tini masih bisa membeli panci di toko",
+      "label": false,
+      "prediction": false,
+      "perplexity": 327.70843505859375,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Tina menjual sebagian dari lupisnya di pasar hari ini Tono masih bisa membeli lupisnya dari Tina",
+      "label": true,
+      "prediction": true,
+      "perplexity": 961.6279296875,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Tina menjual sebagian dari lupisnya di pasar hari ini Tono tidak akan bisa membeli lupisnya dari Tina lagi",
+      "label": false,
+      "prediction": false,
+      "perplexity": 591.1467895507812,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Tina menjual semua lupisnya di pasar hari ini Tono tidak akan bisa membeli lupisnya dari Tina lagi",
+      "label": true,
+      "prediction": true,
+      "perplexity": 647.56298828125,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Tina menjual semua lupisnya di pasar hari ini Tono masih bisa membeli lupisnya dari Tina",
+      "label": false,
+      "prediction": true,
+      "perplexity": 1262.108642578125,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Tini membersihkan beberapa meja Masih ada beberapa meja yang tersisa untuk dibersihkan oleh Tini",
+      "label": true,
+      "prediction": true,
+      "perplexity": 238.83908081054688,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Tini membersihkan beberapa meja Tidak ada meja yang tersisa untuk dibersihkan oleh Tini",
+      "label": false,
+      "prediction": false,
+      "perplexity": 276.912109375,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Tini membersihkan semua meja Tidak ada meja yang tersisa untuk dibersihkan oleh Tini",
+      "label": true,
+      "prediction": true,
+      "perplexity": 236.42544555664062,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Tini membersihkan semua meja Masih ada meja yang tersisa untuk dibersihkan oleh Tini",
+      "label": false,
+      "prediction": false,
+      "perplexity": 329.4678039550781,
+      "phenomenon": "scalar_implicatures",
+      "category": "some_but_not_all"
+    },
+    {
+      "text": "Beberapa pengunjung di kafe sedang meminum kopi Ada beberapa pengunjung di kafe yang tidak sedang meminum kopi",
+      "label": true,
+      "prediction": true,
+      "perplexity": 198.06272888183594,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Beberapa pengunjung di kafe sedang meminum kopi Tidak ada pengunjung di kafe yang tidak sedang meminum kopi",
+      "label": false,
+      "prediction": false,
+      "perplexity": 203.17117309570312,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Semua pengunjung di kafe sedang meminum kopi Tidak ada pengunjung di kafe yang tidak sedang meminum kopi",
+      "label": true,
+      "prediction": true,
+      "perplexity": 194.03421020507812,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Semua pengunjung di kafe sedang meminum kopi Ada beberapa pengunjung di kafe yang tidak sedang meminum kopi",
+      "label": false,
+      "prediction": false,
+      "perplexity": 231.43392944335938,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Beberapa anak di sekolah sedang memakai baju seragam mereka Ada beberapa anak di sekolah yang tidak sedang memakai baju seragam mereka",
+      "label": true,
+      "prediction": true,
+      "perplexity": 63.04166793823242,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Beberapa anak di sekolah sedang memakai baju seragam mereka Tidak ada anak di sekolah yang tidak sedang memakai baju seragam mereka",
+      "label": false,
+      "prediction": false,
+      "perplexity": 64.43936920166016,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Semua anak di sekolah sedang memakai baju seragam mereka Tidak ada anak di sekolah yang tidak sedang memakai baju seragam mereka",
+      "label": true,
+      "prediction": true,
+      "perplexity": 62.78236389160156,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Semua anak di sekolah sedang memakai baju seragam mereka Ada beberapa anak di sekolah yang tidak sedang memakai baju seragam mereka",
+      "label": false,
+      "prediction": false,
+      "perplexity": 67.50982666015625,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Beberapa anjing di lingkungan itu sedang menggonggong Ada beberapa anjing di lingkungan itu yang tidak sedang menggonggong",
+      "label": true,
+      "prediction": true,
+      "perplexity": 70.08695983886719,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Beberapa anjing di lingkungan itu sedang menggonggong Tidak ada anjing di lingkungan itu yang tidak sedang menggonggong",
+      "label": false,
+      "prediction": false,
+      "perplexity": 62.18973159790039,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Semua anjing di lingkungan itu sedang menggonggong Tidak ada anjing di lingkungan itu yang tidak sedang menggonggong",
+      "label": true,
+      "prediction": true,
+      "perplexity": 58.558258056640625,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Semua anjing di lingkungan itu sedang menggonggong Ada beberapa anjing di lingkungan itu yang tidak sedang menggonggong",
+      "label": false,
+      "prediction": false,
+      "perplexity": 72.32793426513672,
+      "phenomenon": "scalar_implicatures",
+      "category": "all"
+    },
+    {
+      "text": "Kucingnya meloloskan diri dari rumah Tini Kucingnya tidak dikurung sebelumnya",
+      "label": false,
+      "prediction": true,
+      "perplexity": 2054.12744140625,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Kucingnya meloloskan diri dari rumah Tini Kucingnya dikurung sebelumnya",
+      "label": true,
+      "prediction": false,
+      "perplexity": 2628.644775390625,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Sup ayamnya mulai mendidih Sup ayamnya tidak mendidih sebelumnya",
+      "label": true,
+      "prediction": false,
+      "perplexity": 2126.55615234375,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Sup ayamnya mulai mendidih Sup ayamnya mendidih sebelumnya",
+      "label": false,
+      "prediction": true,
+      "perplexity": 4025.33154296875,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Es krimnya mulai mencair Es krimnya tidak cair sebelumnya",
+      "label": true,
+      "prediction": false,
+      "perplexity": 2000.1748046875,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Es krimnya mulai mencair Es krimnya cair sebelumnya",
+      "label": false,
+      "prediction": true,
+      "perplexity": 3790.5986328125,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Orang utan itu tertidur Orang utan itu tidak dalam keadaan terbangun sebelumnya",
+      "label": false,
+      "prediction": true,
+      "perplexity": 1647.3541259765625,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Orang utan itu tertidur Orang utan itu dalam keadaan terbangun sebelumnya",
+      "label": true,
+      "prediction": false,
+      "perplexity": 2502.997802734375,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tono menemukan dompetnya Tono tidak tahu di mana dompetnya berada sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 378.78375244140625,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tono menemukan dompetnya Tono tahu di mana dompetnya berada sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 517.873779296875,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tini memecahkan gelasnya Gelasnya tidak pecah sebelumnya",
+      "label": true,
+      "prediction": false,
+      "perplexity": 4314.61083984375,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tini memecahkan gelasnya Gelasnya pecah sebelumnya",
+      "label": false,
+      "prediction": true,
+      "perplexity": 9791.5947265625,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tina meninggalkan pesta itu Tina ada di pesta itu sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 537.38232421875,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tina meninggalkan pesta itu Tina tidak ada di pesta itu sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 259.1241455078125,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tono tiba di bandara Tono belum ada di bandara sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 192.42308044433594,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tono tiba di bandara Tono sudah ada di bandara sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 221.1266326904297,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tini baru saja mengisi kendi dengan air Kendinya belum penuh sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 595.5394897460938,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tini baru saja mengisi kendi dengan air Kendinya sudah penuh sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 441.0715637207031,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tina mengosongkan kotak itu Kotak itu tidak kosong sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 561.9590454101562,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Tina mengosongkan kotak itu Kotak itu kosong sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 726.6470947265625,
+      "phenomenon": "presuppositions",
+      "category": "change-of-state_verbs"
+    },
+    {
+      "text": "Kucingnya lah yang meloloskan diri dari rumah Tini Hanya kucing itu yang meloloskan diri",
+      "label": true,
+      "prediction": true,
+      "perplexity": 692.5586547851562,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Kucingnya lah yang meloloskan diri dari rumah Tini Beberapa hewan lain juga melarikan diri",
+      "label": false,
+      "prediction": false,
+      "perplexity": 638.1073608398438,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Sup ayamnya lah yang mulai mendidih Hanya sup itu yang mulai mendidih",
+      "label": true,
+      "prediction": true,
+      "perplexity": 479.5573425292969,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Sup ayamnya lah yang mulai mendidih Beberapa sup lainnya juga mulai mendidih",
+      "label": false,
+      "prediction": false,
+      "perplexity": 591.767822265625,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Es krimnya lah yang mulai mencair Hanya es krim itu yang mulai mencair",
+      "label": true,
+      "prediction": true,
+      "perplexity": 302.421142578125,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Es krimnya lah yang mulai mencair Beberapa es krim lainnya juga mulai mencair",
+      "label": false,
+      "prediction": false,
+      "perplexity": 371.3738098144531,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Orang utanlah yang tertidur Hanya orang utan itu yang tertidur",
+      "label": true,
+      "prediction": false,
+      "perplexity": 1592.855224609375,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Orang utanlah yang tertidur Beberapa hewan lainnya juga tertidur",
+      "label": false,
+      "prediction": true,
+      "perplexity": 2697.37646484375,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Dompetnya lah yang Tono temukan Tono hanya menemukan dompetnya",
+      "label": true,
+      "prediction": false,
+      "perplexity": 1577.51171875,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Dompetnya lah yang Tono temukan Tono juga menemukan barang lainnya",
+      "label": false,
+      "prediction": true,
+      "perplexity": 1006.422607421875,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Gelasnya lah yang Tini pecahkan Tini hanya memecahkan gelasnya",
+      "label": true,
+      "prediction": false,
+      "perplexity": 1733.1146240234375,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Gelasnya lah yang Tini pecahkan Tini juga memecahkan barang lainnya",
+      "label": false,
+      "prediction": true,
+      "perplexity": 2380.155029296875,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Tinalah yang meninggalkan pesta itu Hanya Tina yang meninggalkan pesta itu",
+      "label": true,
+      "prediction": true,
+      "perplexity": 318.3898620605469,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Tinalah yang meninggalkan pesta itu Seseorang selain Tina juga meninggalkan pesta itu",
+      "label": false,
+      "prediction": false,
+      "perplexity": 731.7703247070312,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Tonolah yang tiba di bandara Hanya Tono yang tiba di bandara",
+      "label": true,
+      "prediction": true,
+      "perplexity": 258.93023681640625,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Tonolah yang tiba di bandara Seseorang selain Tono juga tiba di bandara",
+      "label": false,
+      "prediction": false,
+      "perplexity": 851.6516723632812,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Kendinya lah yang Tini isi Tini hanya mengisi kendi itu",
+      "label": true,
+      "prediction": false,
+      "perplexity": 2011.038818359375,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Kendinya lah yang Tini isi Tini juga mengisi barang lainnya",
+      "label": false,
+      "prediction": true,
+      "perplexity": 2880.115478515625,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Kotaknya lah yang Tina kosongkan Tina hanya mengosongkan kotak itu",
+      "label": true,
+      "prediction": false,
+      "perplexity": 3107.4072265625,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Kotaknya lah yang Tina kosongkan Tina juga mengosongkan barang lain",
+      "label": false,
+      "prediction": true,
+      "perplexity": 6008.66162109375,
+      "phenomenon": "presuppositions",
+      "category": "clefting"
+    },
+    {
+      "text": "Tono ingin tahu bagaimana caranya kucing itu meloloskan diri dari rumah Tini Kucing itu meloloskan diri sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 820.549560546875,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu bagaimana caranya kucing itu meloloskan diri dari rumah Tini Kucing itu tidak meloloskan diri sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 645.3992309570312,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu bagaimana caranya sup ayam itu mulai mendidih Sup ayamnya belum mendidih sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 633.0860595703125,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu bagaimana caranya sup ayam itu mulai mendidih Sup ayamnya sudah mendidih sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 550.498046875,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu bagaimana caranya es krim itu mulai mencair Es krimnya belum mencair sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 351.0030822753906,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu bagaimana caranya es krim itu mulai mencair Es krimnya sudah mencair sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 308.6581726074219,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu bagaimana caranya orang utan itu tertidur Orang utan itu tidak dalam keadaan terbangun sebelumnya",
+      "label": false,
+      "prediction": true,
+      "perplexity": 1203.58056640625,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu bagaimana caranya orang utan itu tertidur Orang utan itu dalam keadaan terbangun sebelumnya",
+      "label": true,
+      "prediction": false,
+      "perplexity": 1587.6207275390625,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tini ingin tahu bagaimana caranya Tono menemukan dompetnya Tono tidak tahu dimana dompetnya berada sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 541.2415771484375,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tini ingin tahu bagaimana caranya Tono menemukan dompetnya Tono tahu dimana dompetnya berada sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 671.865966796875,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu bagaimana caranya Tini memecahkan gelasnya Tini memecahkan gelasnya sebelumnya",
+      "label": true,
+      "prediction": false,
+      "perplexity": 1188.59912109375,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu bagaimana caranya Tini memecahkan gelasnya Tini tidak memecahkan gelasnya sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 882.31396484375,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu kenapa Tina meninggalkan pesta itu Tina ada di pesta itu sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 457.2637634277344,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu kenapa Tina meninggalkan pesta itu Tina tidak ada di pesta itu sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 254.15524291992188,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tini ingin tahu bagaimana caranya Tono tiba di bandara Tono belum ada di bandara sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 193.37619018554688,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tini ingin tahu bagaimana caranya Tono tiba di bandara Tono sudah ada di bandara sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 205.5097198486328,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu kenapa Tini baru saja mengisi kendi dengan air Kendinya belum penuh sebelumnya",
+      "label": true,
+      "prediction": true,
+      "perplexity": 619.367919921875,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu kenapa Tini baru saja mengisi kendi dengan air Kendinya sudah penuh sebelumnya",
+      "label": false,
+      "prediction": false,
+      "perplexity": 498.8614807128906,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu kenapa Tini mengosongkan kotaknya Kotaknya tidak kosong sebelumnya",
+      "label": true,
+      "prediction": false,
+      "perplexity": 1795.7325439453125,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    },
+    {
+      "text": "Tono ingin tahu kenapa Tini mengosongkan kotaknya Kotaknya kosong sebelumnya",
+      "label": false,
+      "prediction": true,
+      "perplexity": 2010.7491455078125,
+      "phenomenon": "presuppositions",
+      "category": "embedded_interrogatives"
+    }
+  ],
+  "accuracy": 0.6904761904761905
+}
